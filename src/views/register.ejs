@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="stylesheets/register.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Oswald&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Barlow:ital,wght@1,100&display=swap" rel="stylesheet">
+</head>
+<body>
+    <header class="header__container">
+        <img class="logo" src="/images/kisspng-nike-swoosh-logo-brand-nike-5abe1b5179b2c7.6107499115224082734985.png" alt="logo">
+    </header>
+
+    <main>
+       
+        <form action="">
+            <h1>Registrate</h1>
+            <label>Nombre y apellido: <input class="completar" type="text" name="nombreYa"></label>
+            <label>Email:<input class="completar" type="email" name="email" ></label>
+            <h4>Fecha de nacimiento</h4>
+            <input id="date" type="date">
+            <input type="text" name="domicilio" placeholder="Domicilio">
+            <h4>Elegí tu foto de usuario:</h4>
+            <input type="file" name="foto usuario " accept=".pdf,.jpg,.png">
+            <h4>Elegi tu contraseña</h4>
+            <label>Contraseña:<input class="completar" type="password" name="pass"></label>
+            <label>Confirmar contraseña:<input class="completar" type="password" name="pass"></label>
+            <div class="buttons">
+            <button type="submit">Enviar</button>
+            <button type="reset">Borrar</button>
+            </div>
+        </form>
+    </main>
+</body>

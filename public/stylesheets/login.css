@@ -1,0 +1,66 @@
+*{
+    text-decoration: none;
+    list-style: none;
+    box-sizing: border-box;
+    font-family: 'Oswald', sans-serif;
+}
+
+body{
+    background-color: #3E2B47;
+}
+
+/*-------------HEADER----------------*/
+.header__container{
+    background-color: #F2643E;
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: column;
+    justify-content: space-evenly;
+    align-items: center;
+}
+.logo {
+    width: 125px;
+    height: 125px;
+}
+/*----------------FIN HEADER------------*/
+
+/*-------------------MAIN---------------*/
+main{
+    background-color: #EE4079;
+    border-radius: 5%;
+    margin: 3%;
+    padding: 4%;
+    display: grid;
+    justify-content: center;
+}
+form{
+    display: grid;
+}
+form h1{
+    text-align: center;
+}
+.email_y_pw{
+    width: 100%;
+    border-radius: 2px;
+    margin: 5px 0px 20px 0px;
+    padding: 10px;
+    border: 0px;
+}
+.recordarme{
+    display: flex;
+    flex-direction: row;
+    justify-content: end;
+}
+.recordarme input{
+    margin-top: 21px;
+}
+main button{
+    width: 29%;
+    background-color: #0044AA;
+    color: white;
+    border-radius: 2px;
+    margin: 20px 0px 20px 0px;
+    padding: 10px;
+    border: 0px;
+}
+/*-------------------FIN MAIN---------------*/

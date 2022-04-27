@@ -1,0 +1,248 @@
+*{
+    text-decoration: none;
+    list-style: none;
+    box-sizing: border-box;
+    font-family: 'Oswald', sans-serif;
+}
+
+body{
+    background-color: #3E2B47;
+}
+
+/*-------------HEADER----------------*/
+.header__container{
+    background-color: #F2643E;
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: column;
+    justify-content: space-evenly;
+    align-items: center;
+}
+.container__menu{
+    width: 100%;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+}
+.container__menu .nav1{
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+}
+.nav1 a{
+    color: #111111;
+    width: 100%;
+    text-align: center;
+    align-items: center;
+    padding: 2%;
+}
+.nav2 a{
+    color:#111111;
+    width: 100%;
+    text-align: center;
+    align-items: center;
+    padding: 2%;
+}
+.nav1 a:hover{
+    transform: scale(1.1);
+    transition: .1s;
+    color: white;
+}
+.nav2 a:hover{
+    transform: scale(1.1);
+    transition: .1s;
+    color: white;
+}
+.container__menu .nav2{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+#Buscador {
+    font-family: 'Barlow', sans-serif;
+    width: 100%;
+    border: transparent;
+    padding: 10px 10px 10px 30px;
+    outline: none;
+}
+.logo {
+    width: 125px;
+    height: 125px;
+}
+/*----------------FIN HEADER------------*/
+
+/*--------------MAIN---------------*/
+h2{
+    font-size: 2em;
+    color: white;
+    text-align: center;
+}
+.ofertas{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+    gap: 10px;
+    margin: 2%;
+}
+.off{
+    color: rgb(46, 199, 46);
+    margin: 0px;
+    padding: 1% 0% 3% 3%;
+}
+.oferta_ind .nombre_prod{
+    padding: 2% 0% 0% 3%;
+    margin-top: 0px;
+    margin-bottom: 0px;
+}
+.oferta_ind{
+    background-color: #111111;
+    border-radius: 3% 3% 3% 3%;
+    color: white;
+}
+.ofertas img{
+    width: 100%;
+    border-radius: 3% 3% 0% 0%;
+}
+.oferta_ind .descr_ofer{
+    display: grid;
+    grid-template-columns: 79% 18%;
+}
+
+
+
+/*-------------FIN MAIN--------------*/
+
+/*----------detalle de producto------------*/
+.product__detail {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 20px;
+    
+}
+.product__description {
+    background-color: #111111;
+   
+    border-radius: 3% 3% 3% 3%;
+    color: white;
+}
+ .product__detail img{
+     width: 100%;
+     border-radius: 3% 3% 0% 0%;
+ }
+ .nombre_prod{
+    color: white;
+    margin: 0px;
+    padding: 1% 0% 3% 3%;
+ }
+ .buttons {
+     display: flex;
+     flex-direction: column;
+     margin-top: 5px;
+     
+     
+ }
+.button_personalizado {
+    background-color: #111111;
+    text-align: center;
+    border-radius: 6px;
+    
+    margin: 2px;
+
+}
+.buttons a {
+    color: white;
+}
+
+/*-------------Fin detalle del producto--------------*/
+
+/*-------------------FOOTER---------------*/
+footer{
+    background-color: #111111;
+    color: white;
+    padding: 10px 10px 10px 10px;
+}
+.div1footer ul{
+    padding: 0%;
+}
+.div2footer ul{
+    padding-left: 5%;
+    margin-top: 0%;
+}
+.div1footer{
+    border-bottom: solid grey;
+}
+.div2footer ul a{
+    color: grey;
+}
+.div2footer{
+    border-bottom: solid grey;
+}
+.div2footer p{
+    margin-bottom: 6px;
+}
+.div3footer ul{
+    padding: 0%;
+    margin-top: 1%;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+}
+.div3footer li{
+    padding: 3%;
+}
+.logo_redsocial{
+    width: 25px;
+    background-color: grey;
+    border-radius: 15%;
+    margin: 1%;
+}
+/*--------------FIN FOOTER-----------*/
+
+
+@media (min-width: 768px){
+/*-------------HEADER----------------*/
+    .container__menu{
+        display: flex;
+        justify-content: space-between;
+    }
+    .nav1 a {
+        font-size: 23px;
+    }
+    .nav2 a {
+        font-size: 17px;
+        padding: 9%;
+    }
+    .container__menu .nav1{ 
+        width: 50%; 
+        text-align: center;
+        display: grid;
+        grid-template-columns: 1fr 1fr 1fr;
+    }
+
+    .container__menu .nav2{
+        text-align: center;
+        width: 40%;
+        display: grid;
+        grid-template-columns: 1fr 1fr 1fr;
+    }
+
+
+    .ofertas{
+        flex-direction: row;
+    }
+
+    .oferta_ind{
+        width: 40%;
+    }
+}
+
+@media (min-width: 1024px){
+    .oferta_ind {
+        width: 30%;
+    }
+}
+@media (min-width: 1440px){
+    .oferta_ind {
+        width: 20%;
+    }
+}
