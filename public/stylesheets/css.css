@@ -3,6 +3,9 @@
     list-style: none;
     box-sizing: border-box;
     font-family: 'Oswald', sans-serif;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
 }
 
 body{
@@ -69,6 +72,10 @@ body{
     width: 125px;
     height: 125px;
 }
+
+.carrito_nav {
+    width: 30px;
+}
 /*----------------FIN HEADER------------*/
 
 /*--------------MAIN---------------*/
@@ -134,7 +141,7 @@ h2{
     margin: 0px;
     padding: 1% 0% 3% 3%;
  }
- .buttons {
+ .productDetail__buttons {
      display: flex;
      flex-direction: column;
      margin-top: 5px;
@@ -167,6 +174,8 @@ footer{
 .div2footer ul{
     padding-left: 5%;
     margin-top: 0%;
+    display: flex;
+    justify-content: space-around;
 }
 .div1footer{
     border-bottom: solid grey;
@@ -186,6 +195,7 @@ footer{
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
+    justify-content: space-around;
 }
 .div3footer li{
     padding: 3%;

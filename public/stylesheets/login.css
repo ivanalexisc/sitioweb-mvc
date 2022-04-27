@@ -5,8 +5,10 @@
     font-family: 'Oswald', sans-serif;
 }
 
-body{
-    background-color: #3E2B47;
+.login__content{
+    background-image: url(../images/fondo.jpg);
+
+    height: 109vw;
 }
 
 /*-------------HEADER----------------*/
@@ -25,18 +27,20 @@ body{
 /*----------------FIN HEADER------------*/
 
 /*-------------------MAIN---------------*/
-main{
-    background-color: #EE4079;
+.main_login{
+    background-color: #d927e9;
     border-radius: 5%;
+    opacity: 0.6;
     margin: 3%;
     padding: 4%;
+    
     display: grid;
     justify-content: center;
 }
-form{
+.login{
     display: grid;
 }
-form h1{
+.login h1{
     text-align: center;
 }
 .email_y_pw{
@@ -48,19 +52,23 @@ form h1{
 }
 .recordarme{
     display: flex;
-    flex-direction: row;
     justify-content: end;
 }
 .recordarme input{
     margin-top: 21px;
 }
-main button{
-    width: 29%;
-    background-color: #0044AA;
+ .button_login{
+    width: 50%;
+    background-color: #8500aa;
     color: white;
     border-radius: 2px;
-    margin: 20px 0px 20px 0px;
+    margin: 20px 0px 20px 10px;
     padding: 10px;
     border: 0px;
 }
 /*-------------------FIN MAIN---------------*/
+@media (min-width: 768px){
+    .button_login {
+        width:50%;
+    }
+}

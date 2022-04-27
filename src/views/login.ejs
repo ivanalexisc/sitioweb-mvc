@@ -2,23 +2,23 @@
 <html lang="en">
     <%- include('partials/head'); %>
 <body>
-    <header class="header__container">
-        <img class="logo" src="/images/kisspng-nike-swoosh-logo-brand-nike-5abe1b5179b2c7.6107499115224082734985.png" alt="logo">
-    </header>
+    
 
-
-    <main>
-        <form>
+    <div class="login__content">
+    <main class="main_login">
+        <form class="login">
             <h1>BIENVENIDO</h1>
             <label>Email<input class="email_y_pw" type="email" name="Email" placeholder="Email"></label>
             <label>Contraseña<input class="email_y_pw" type="password" name="password" placeholder="Contraseña"></label>
-            <div class="recordarme">
-            <input type="checkbox" name="recordarme" value="recordarme"><p>Recordarme</p>
-            </div>
-            <p>La combinacion ingresada de email y contraseña no es valida</p>
-            <button type="submit">Ingresar</button>
+        <div class="recordarme">
+            <p>Recordarme</p>
+            <input type="checkbox" name="recordarme" value="recordarme">
+            <button type="submit" class="button_login">Ingresar</button>    
+        </div>
+            
         </form>
     </main>
+</div>
 
 
    

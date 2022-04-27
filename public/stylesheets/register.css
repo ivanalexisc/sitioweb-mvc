@@ -5,8 +5,8 @@
     font-family: 'Oswald', sans-serif;
 }
 
-body{
-    background-color: #3E2B47;
+.register__content {
+    background-image: url(../images/fondo.jpg);
 }
 /*-------------HEADER----------------*/
 .header__container{
@@ -24,15 +24,24 @@ body{
 /*----------------FIN HEADER------------*/
 
 /*-------------------MAIN---------------*/
-form{
-    background-color: #EE4079;
+.main_register{
+    background-color: #d927e9;
+    border-radius: 5%;
+    margin: 3%;
+    padding: 4%;
+    display: grid;
+    justify-content: center;
+    opacity: 0.6;
+}
+.form__register{
+    background-color: #d927e9;
     border-radius: 5%;
     margin: auto;
     display: grid;
     justify-content: center;
     gap: 20px;
 }
-form h1{
+.form__register h1{
     text-align: center;
 }
 h4{
@@ -47,13 +56,13 @@ h4{
 #date{
     margin: 0% 0% 3% 0%;
 }
-main .buttons{
+.buttons_register .buttons{
     display: flex;
     justify-content: space-around;
 }
-main button{
+.buttons_register button{
     width: 29%;
-    background-color: #0044AA;
+    background-color: #8500aa;
     color: white;
     border-radius: 2px;
     margin: 20px 0px 20px 0px;
@@ -66,14 +75,16 @@ main button{
 
 
 @media (min-width: 768px){
-    form{
+    .form__register{
         padding: 4%;
         margin-top: 4%;
         width: 50%;
     }
+    .buttons_register button {
+        width: 48%;}
 }
-@media (min-width: 1440px){
-    form{
+@media (min-width: 1024px){
+    .form__register{
         padding: 4%;
         margin-top: 4%;
         width: 30%;
