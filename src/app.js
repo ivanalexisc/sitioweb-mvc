@@ -9,7 +9,7 @@ const app = express();
 
 const indexRouter = require('./routes/index');
 const usersRouter = require('./routes/users');
-const productsRouter = require('./routes/products');
+
 
 
 
@@ -25,7 +25,6 @@ app.use(cookieParser());
 
 app.use('/', indexRouter);
 app.use('/users', usersRouter);
-
 
 
 // catch 404 and forward to error handler
