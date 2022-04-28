@@ -11,20 +11,8 @@
     height: 109vw;
 }
 
-/*-------------HEADER----------------*/
-.header__container{
-    background-color: #F2643E;
-    display: flex;
-    flex-wrap: wrap;
-    flex-direction: column;
-    justify-content: space-evenly;
-    align-items: center;
-}
-.logo {
-    width: 125px;
-    height: 125px;
-}
-/*----------------FIN HEADER------------*/
+
+
 
 /*-------------------MAIN---------------*/
 .main_login{
