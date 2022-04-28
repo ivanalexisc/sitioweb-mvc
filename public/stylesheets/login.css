@@ -61,5 +61,14 @@
     .button_login {
         width:50%;
     }
-   
+    .login__content .main_login .login {
+        width: 70vw;
+        margin: auto;
+        margin-top: 12vw;
+
+    }
+    .email_y_pw{
+        width: 67vw;
+    }
+
 }
