@@ -1,38 +1,40 @@
-*{
-    text-decoration: none;
-    list-style: none;
-    box-sizing: border-box;
-    font-family: 'Oswald', sans-serif;
-}
 
+.fixed-fullscreen {
+    position: fixed;
+    /* Preserve aspect ratio */
+    min-width: 100%;
+    min-height: 100%;
+  }
+  
 .login__content{
     background-image: url(../images/fondo.jpg);
-
-    height: 109vw;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-size: cover;
+   display: flex;
+   width: 100vw;
 }
 
-
-
-
-/*-------------------MAIN---------------*/
-.main_login{
-    background-color: #d927e9;
-    border-radius: 5%;
-    opacity: 0.6;
-    margin: 3%;
-    padding: 4%;
-    
-    display: grid;
-    justify-content: center;
-}
-.login{
-    display: grid;
-}
-.login h1{
+.login h1 {
+    color: white;
     text-align: center;
 }
+.login label p {
+    color: white;
+}
+
+/*-------------------MAIN---------------*/
+ .login__content .main_login{
+    border: 1px solid red;
+    opacity: 0.6;
+    width: 100vw;
+}
+.login__content .main_login .login {
+    margin-top: 15vw;
+}
+
 .email_y_pw{
-    width: 100%;
+    width: 100vw;
     border-radius: 2px;
     margin: 5px 0px 20px 0px;
     padding: 10px;
@@ -59,4 +61,5 @@
     .button_login {
         width:50%;
     }
+   
 }
