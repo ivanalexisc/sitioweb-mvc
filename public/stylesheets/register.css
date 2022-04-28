@@ -2,33 +2,48 @@
 
 .register__content {
     background-image: url(../images/fondo.jpg);
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-size: cover;
+    display: flex;
+    width: 100vw;
+  
+  
 }
 
 
 /*-------------------MAIN---------------*/
-.main_register{
+.register__content .main_register{
 
-    border-radius: 5%;
-    padding: 6%;
     justify-content: center;
     opacity: 0.6;
+    
+}
+.register__content .main_register .form__register {
+    width: 100vw;
+
+    margin-top: 10px;
 }
 .form__register{
-    background-color: #d927e9;
-    border-radius: 5%;
+ 
+    
     margin: auto;
     display: grid;
     justify-content: center;
-    gap: 20px;
+    
 }
 .form__register h1{
     text-align: center;
+    color: white;
 }
-h4{
-    border-top: #1b1b1b solid 4px;
-    padding: 2% 0%;
-    margin: 4% 0% 0% 0%;
+.form__register h4{
+    
+    color: white;
 }
+#foto_usuario{
+color:transparent;
+}
+
 .completar{
     width: 100%;
 }
@@ -56,18 +71,13 @@ h4{
 
 @media (min-width: 768px){
     .form__register{
-        padding: 4%;
-        margin-top: 4%;
+        
         width: 50%;
     }
     .buttons_register button {
-        width: 48%;}
-}
-@media (min-width: 1024px){
-    .form__register{
-        padding: 4%;
-        margin-top: 4%;
-        width: 30%;
+        width: 48%;
     }
 }
+@media (min-width: 1024px){
+    
 
