@@ -1,3 +1,4 @@
 exports.showProduct = (req,res) => {
-    res.render('productDetail')
+    res.render('productDetail');
 };
+
