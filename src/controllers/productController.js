@@ -13,6 +13,9 @@ const controller = {
             res.render('productDetail', {producto:products[i]})
 
         }
+    },
+    create: (req,res) => {
+        res.render('product-create-form')
     }
 };
 
