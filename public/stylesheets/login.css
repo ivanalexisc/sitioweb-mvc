@@ -1,18 +1,10 @@
 
-.fixed-fullscreen {
-    position: fixed;
-    /* Preserve aspect ratio */
-    min-width: 100%;
-    min-height: 100%;
-  }
-  
 .login__content{
-    background-image: url(../images/fondo.jpg);
-    background-repeat: no-repeat;
-    background-attachment: fixed;
-    background-size: cover;
+   
    display: flex;
-   width: 100vw;
+   height: 100vh;
+   background-color: black;
+  
 }
 
 .login h1 {
@@ -27,14 +19,13 @@
  .login__content .main_login{
     border: 1px solid red;
     opacity: 0.6;
-    width: 100vw;
-}
-.login__content .main_login .login {
-    margin-top: 15vw;
+    
+   
 }
 
+
 .email_y_pw{
-    width: 100vw;
+   
     border-radius: 2px;
     margin: 5px 0px 20px 0px;
     padding: 10px;
