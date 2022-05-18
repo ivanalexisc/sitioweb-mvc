@@ -125,7 +125,7 @@ h2{
 }
 .product__description {
     background-color: #111111;
-   
+    width: 80vw;
     border-radius: 3% 3% 3% 3%;
     color: white;
 }
@@ -140,7 +140,7 @@ h2{
  }
  .productDetail__buttons {
      display: flex;
-     flex-direction: column;
+     
      margin-top: 5px;
      
      
