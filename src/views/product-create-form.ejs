@@ -6,18 +6,20 @@
 
         <%- include('partials/header')%>
 
-        <form action="" class="form__register">
+        <form action="/products/create" enctype="multipart/form-data" method="POST" class="form__register">
             <h1>Formulario de creacion de productos</h1>
             <label>
                 <h4>Nombre del producto:</h4> <input class="completar" type="text" name="name">
             </label>
             <label>
-                <h4>Precio del producto:</h4><input class="completar" type="email" name="email">
+                <h4>Precio del producto:</h4><input class="completar" type="text" name="price">
             </label>
             <label for="discount" class="form-label">
                 <h4>Descuento:</h4>
                 <input type="text" id="discount" name="discount" placeholder="Ej: 15" class="completar">
             </label>
+            <label for="discount" class="form-label">imagen</label>
+						<input type="file" name="image" >
             
             <label for="category" class="form-label"><h4>Categoría:</h4></label>
             <select name="category" id="category" class="completar">
