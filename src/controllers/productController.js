@@ -4,7 +4,7 @@ const productsFileJson = path.join(__dirname, '../data/productsDB.json');
 const products = JSON.parse(fs.readFileSync(productsFileJson, 'utf-8'));
 let guardar = (products) => {
 	fs.writeFileSync(
-	  path.join(__dirname, "../data/productsDataBase.json"),
+	  path.join(__dirname, "../data/productsDB.json"),
 	  JSON.stringify(products, null, " "),
 	  "utf-8"
 	);
