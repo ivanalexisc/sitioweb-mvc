@@ -5,8 +5,16 @@
     <body>
 
         <%- include('partials/header')%>
-
-        <form action="/products/create" enctype="multipart/form-data" method="POST" class="form__register">
+        <% if(typeof errors != "undefined") { %> 
+            <% errors.forEach(error => { %>
+                <ul>    
+                    <li>
+                        <%= error.msg %>
+                    </li>
+                </ul>
+                <% }) %>
+                <% } %>
+        <form action="/products/store" enctype="multipart/form-data" method="POST" class="form__register">
             <h1>Formulario de creacion de productos</h1>
             <label>
                 <h4>Nombre del producto:</h4> <input class="completar" type="text" name="name">

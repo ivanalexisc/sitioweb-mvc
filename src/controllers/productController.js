@@ -1,5 +1,7 @@
 const fs = require('fs');
+const { body, validationResult } = require('express-validator');
 const path = require('path');
+
 const productsFileJson = path.join(__dirname, '../data/productsDB.json');
 const products = JSON.parse(fs.readFileSync(productsFileJson, 'utf-8'));
 let guardar = (products) => {
@@ -25,16 +27,20 @@ const controller = {
         res.render('product-create-form');
     },
     store: (req,res) => {
+       const resultado = validationResult(req);
+       if (resultado.isEmpty()){
 
         let newProduct = {
             id:products[products.length -1].id + 1,
             ...req.body,
-           image: req.file.filename
+           
         }
         products.push(newProduct);
         guardar(products);
-        res.redirect('/products');
-
+        res.redirect('/products/create');
+        }  else {
+        res.render('product-create-form', resultado )
+        }
 
     }
 };
