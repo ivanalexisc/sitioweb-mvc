@@ -18,16 +18,27 @@ module.exports = {
           return false;
         })
         .withMessage('Imagen obligatoria')
-        .bail()
+        
         .custom(function(value, { req }){
-         let ext = path.extname(req.file.originalname);
-         if(ext == '.jph' || ext == '.jpeg' || ext == '.png'){
-           return true;
-         }
-          return false;
+          if (req.file != undefined){
+            let ext = path.extname(req.file.originalname);
+            if(ext == '.jpg' || ext == '.jpeg' || ext == '.png'){
+              return true;
+            }
+             return false;
+          }
+         
 
         })
         .withMessage('Imagen incorrecta')
        
+    ],
+    login: [
+      body('email')
+      .notEmpty()
+      .withMessage('Completar email'),
+      body('password')
+      .notEmpty()
+      .withMessage('Completar contraseña'),
     ]
 };

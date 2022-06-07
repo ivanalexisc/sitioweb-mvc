@@ -6,13 +6,23 @@
 
     <div class="login__content fixed-fullscreen">
     <div class="main_login">
-        <form class="login">
+        <% if(typeof errors != "undefined") { %> 
+            <% errors.forEach(error => { %>
+                <ul>    
+                    <li>
+                        <%= error.msg %>
+                    </li>
+                </ul>
+                <% }) %>
+                <% } %>
+        <form action="/users/login" method="POST" class="login">
+           
             <h1>BIENVENIDO</h1>
-            <label><p>Email</p><input class="email_y_pw" type="email" name="Email" placeholder="Email"></label>
+            <label><p>Email</p><input class="email_y_pw" type="email" name="email" placeholder="Email"></label>
             <label><p>Contraseña</p><input class="email_y_pw" type="password" name="password" placeholder="Contraseña"></label>
         <div class="recordarme">
             <label ><p>Recordarme</p></label>
-            <input type="checkbox" name="recordarme" value="recordarme">
+            <input type="checkbox" name="recordarme" >
             <button type="submit" class="button_login">Ingresar</button>    
         </div>
             

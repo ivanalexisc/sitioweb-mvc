@@ -4,6 +4,8 @@ const path = require('path');
 const cookieParser = require('cookie-parser');
 const logger = require('morgan');
 const methodOverride = require('method-override');
+const log = require('./middlewares/log');
+const session = require('express-session');
 const app = express();
 
 
@@ -24,6 +26,14 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(methodOverride('_method'));
+app.use(session({
+secret:'Esta es la pagina de ivo :D ',
+resave: true,
+saveUninitialized: true
+}));
+
+// mis middlewares
+app.use(log);
 
 
 app.use('/', indexRouter);

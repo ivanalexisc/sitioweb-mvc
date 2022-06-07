@@ -1,21 +1,26 @@
 [
  {
-  "email": "iac_1999@hotmail.com"
- },
- {
-  "email": "iac_1999@hotmail.com"
- },
- {
-  "nombre": "ivan chanenko",
-  "email": "iac_1999@hotmail.com"
- },
- {
   "nombre": "ivan chanenko",
   "email": "iac_1999@hotmail.com",
-  "domicilio": "asdasda",
-  "password": [
-   "asd",
-   "asd"
-  ]
+  "domicilio": "la paz111",
+  "password": "$2b$10$3L/figXrl5cMtsMeld899urx7hkRQ0d5zctuT1t.xkZV0ZmhsWsa2"
+ },
+ {
+  "nombre": "ivan chanenko",
+  "email": "ivanalexischanenko@gmail.com",
+  "domicilio": "1234",
+  "password": "$2a$10$tLN.PIsaixVkHrKsn3xJhu9M6wqioKohe72wAATSjFsgqJc5A4NCi"
+ },
+ {
+  "nombre": "facundo cali",
+  "email": "facucali@gmail.com",
+  "domicilio": "lasala12",
+  "password": "$2a$10$t/Anr.WOvRyu3Xtg0OGseudUse5OCkrDRX8AcZ3AwmQJZbgNNt3BK"
+ },
+ {
+  "nombre": "facu cali",
+  "email": "faculogo@gmail.com",
+  "domicilio": "loap 12",
+  "password": "$2a$10$BxRkaNzB8AuRx0RLBKlwMO6Y8C9YJb2cpZrKDr67fsQ9wgkU0Mkku"
  }
 ]
