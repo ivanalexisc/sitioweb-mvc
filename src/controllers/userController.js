@@ -50,6 +50,13 @@ const controller ={
             return res.render('login', {errors: errors.errors})
         }
     
+    },
+    logout: (req,res) => {
+        req.session.destroy();
+
+        res.clearCookie('recordame');
+        
+        res.redirect('/products');
     }
 };
 module.exports = controller;

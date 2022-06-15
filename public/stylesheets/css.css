@@ -277,11 +277,22 @@ footer{
         width: 50vw;
         margin-left: 25vw;
     }
+    .product__description {
+        width: 50vw;
+    }
 }
 
 @media (min-width: 1024px){
     .oferta_ind {
         width: 30%;
+    }
+    .product__description {
+        width: 30vw;
+        margin-left: 8vw;
+    }
+    .productDetail__buttons {
+        
+        margin-left: 8vw;
     }
 }
 @media (min-width: 1440px){
