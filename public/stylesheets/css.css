@@ -1,7 +1,7 @@
 
 
 body{
-    background-color: #3E2B47;
+    background-color: #ebe5ed;
 }
 
 /*-------------HEADER----------------*/
@@ -15,8 +15,7 @@ body{
 }
 .container__menu{
     width: 100%;
-    display: grid;
-    grid-template-columns: 1fr 1fr;
+   
 }
 .container__menu .nav1{
     width: 100%;
@@ -78,7 +77,7 @@ body{
 /*--------------MAIN---------------*/
 h2{
     font-size: 2em;
-    color: white;
+    color: rgb(3, 2, 2);
     text-align: center;
 }
 .ofertas{

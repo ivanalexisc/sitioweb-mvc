@@ -4,6 +4,7 @@
    display: flex;
    height: 100vh;
    background-color: rgb(192, 241, 56);
+   flex-direction: column;
   
 }
 
@@ -19,6 +20,8 @@
  .login__content .main_login{
     border: 1px solid red;
     opacity: 0.6;
+    flex: 1;
+   
     
    
 }
@@ -31,9 +34,16 @@
     padding: 10px;
     border: 0px;
 }
+.recordarme1 {
+    width: 45%;
+}
+.recordarme2 {
+    width: 54%;
+}
 .recordarme{
     display: flex;
     justify-content: end;
+    flex-direction: row;
 }
 .recordarme input{
     margin-top: 21px;
