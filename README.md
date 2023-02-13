@@ -1,3 +1,3 @@
 # sitioweb-mvc
 E-comerce desarrollado con node+express utilizando la arquitectura MVC. 
--EN PROCESO
+-EN STAND BY porque estoy cursando :)
