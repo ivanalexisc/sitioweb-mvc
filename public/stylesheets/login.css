@@ -1,10 +1,14 @@
-
+body {
+    background: url(../images/fondo.jpg);
+    height: 100vh;
+}
 .login__content{
    
    display: flex;
-   height: 100vh;
-   background-color: rgb(192, 241, 56);
    flex-direction: column;
+   margin: 1px;
+
+   
   
 }
 
@@ -18,9 +22,10 @@
 
 /*-------------------MAIN---------------*/
  .login__content .main_login{
-    border: 1px solid red;
     opacity: 0.6;
-    flex: 1;
+    display: flex;
+    margin-top: 20vh;
+    flex-direction: column;
    
     
    

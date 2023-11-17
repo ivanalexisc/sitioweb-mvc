@@ -5,7 +5,7 @@ module.exports = {
         .notEmpty()
         .withMessage('El campo de nombre es obligatorio')
         .isLength({min:5, max: 20})
-        .withMessage('El campo no es un email'),
+        .withMessage('El campo debe ser un precio '),
         body('discount')
         .notEmpty()
         .withMessage('El campo debe ser un numero'),
@@ -18,6 +18,7 @@ module.exports = {
           return false;
         })
         .withMessage('Imagen obligatoria')
+        .bail()
         
         .custom(function(value, { req }){
           if (req.file != undefined){
