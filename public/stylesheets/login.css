@@ -1,7 +1,4 @@
-body {
-    background: url(../images/fondo.jpg);
-    height: 100vh;
-}
+
 .login__content{
    
    display: flex;

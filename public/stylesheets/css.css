@@ -1,12 +1,12 @@
 
 
 body{
-    background-color: #ebe5ed;
+    background-color: #ACE1AF;
 }
 
 /*-------------HEADER----------------*/
 .header__container{
-    background-color: #F2643E;
+    background-color: #B0EBB4;
     display: flex;
     flex-wrap: wrap;
     flex-direction: column;
@@ -98,7 +98,7 @@ h2{
     margin-bottom: 0px;
 }
 .oferta_ind{
-    background-color: #111111;
+    background-color: #BFF6C3;
     border-radius: 3% 3% 3% 3%;
     color: white;
 }
@@ -188,7 +188,7 @@ h2{
 
 /*-------------------FOOTER---------------*/
 footer{
-    background-color: #111111;
+    background-color: #E0FBE2;
     color: white;
     padding: 10px 10px 10px 10px;
 }
