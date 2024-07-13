@@ -4,7 +4,9 @@ module.exports = {
       body('name')
         .notEmpty()
         .withMessage('El campo de nombre es obligatorio')
-        .isLength({min:5, max: 20})
+        .isLength({min:5, max: 20}),
+        body('price')
+        .notEmpty()
         .withMessage('El campo debe ser un precio '),
         body('discount')
         .notEmpty()

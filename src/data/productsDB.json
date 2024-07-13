@@ -1,56 +1,65 @@
 [
-    {
-     "id": 1,
-     "name": "buzo nike blanco",
-     "description": "libero ut massa volutpat convallis morbi odio odio elementum eu interdum eu tincidunt in leo maecenas pulvinar lobortis est phasellus sit amet erat nulla tempus vivamus in felis eu sapien cursus vestibulum proin eu mi",
-     "price": 3144,
-     "discount": 25,
-     "category": "in-sale",
-     "image": "oferta1.jpg"
-    },
-    {
-     "id": 2,
-     "name": "remera nike azul",
-     "description": "fusce congue diam id ornare imperdiet sapien urna pretium nisl ut volutpat sapien arcu sed augue aliquam erat volutpat in congue etiam justo etiam pretium iaculis justo in hac habitasse platea dictumst etiam faucibus cursus urna ut tellus nulla ut erat id mauris vulputate elementum nullam",
-     "price": 4163,
-     "discount": 45,
-     "category": "in-sale",
-     "image": "oferta2.jpg"
-    },
-    {
-     "id": 3,
-     "name": "musculosa nike",
-     "description": "justo in blandit ultrices enim lorem ipsum dolor sit amet consectetuer adipiscing elit proin interdum mauris non ligula pellentesque ultrices phasellus id sapien",
-     "price": 3546,
-     "discount": 38,
-     "category": "in-sale",
-     "image": "oferta3.jpg"
-    },
-    {
-     "id": 4,
-     "name": "buzo verde nike",
-     "description": "nisl venenatis lacinia aenean sit amet justo morbi ut odio cras mi pede malesuada in imperdiet et commodo vulputate justo in blandit ultrices enim lorem ipsum dolor sit amet consectetuer adipiscing elit proin interdum mauris non ligula pellentesque",
-     "price": 1178,
-     "discount": 45,
-     "category": "in-sale",
-     "image": "oferta4.jpg"
-    },
-    {
-     "id": 5,
-     "name": "Buzo nike negro",
-     "description": "lacus morbi sem mauris laoreet ut rhoncus aliquet pulvinar sed nisl nunc rhoncus dui vel sem sed sagittis nam congue risus semper porta volutpat quam pede lobortis ligula sit amet eleifend pede libero quis orci nullam molestie nibh in lectus pellentesque",
-     "price": 1368,
-     "discount": 35,
-     "category": "in-sale",
-     "image": "oferta6.jpg"
-    },
-    {
-     "id": 6,
-     "name": "short nike negro",
-     "description": "molestie lorem quisque ut erat curabitur gravida nisi at nibh in hac habitasse platea dictumst aliquam augue quam sollicitudin vitae consectetuer eget rutrum at lorem integer tincidunt ante vel",
-     "price": 4309,
-     "discount": 29,
-     "category": "in-sale",
-     "image": "oferta7.jpg"
-    }
-   ]
+ {
+  "id": 1,
+  "name": "buzo nike blanco",
+  "price": 3144,
+  "discount": 25,
+  "image": "oferta1.jpg",
+  "category": "in-sale",
+  "description": "libero ut massa volutpat convallis morbi odio odio elementum eu interdum eu tincidunt in leo maecenas pulvinar lobortis est phasellus sit amet erat nulla tempus vivamus in felis eu sapien cursus vestibulum proin eu mi"
+ },
+ {
+  "id": 2,
+  "name": "buzo nike blanco",
+  "price": 3144,
+  "discount": 25,
+  "image": "oferta2.jpg",
+  "category": "in-sale",
+  "description": "libero ut massa volutpat convallis morbi odio odio elementum eu interdum eu tincidunt in leo maecenas pulvinar lobortis est phasellus sit amet erat nulla tempus vivamus in felis eu sapien cursus vestibulum proin eu mi"
+ },
+ {
+  "id": 3,
+  "name": "buzo nike blanco",
+  "price": 3144,
+  "discount": 25,
+  "image": "oferta3.jpg",
+  "category": "in-sale",
+  "description": "libero ut massa volutpat convallis morbi odio odio elementum eu interdum eu tincidunt in leo maecenas pulvinar lobortis est phasellus sit amet erat nulla tempus vivamus in felis eu sapien cursus vestibulum proin eu mi"
+ },
+ {
+  "id": 4,
+  "name": "buzo nike blanco",
+  "price": 3144,
+  "discount": 25,
+  "image": "oferta4.jpg",
+  "category": "in-sale",
+  "description": "libero ut massa volutpat convallis morbi odio odio elementum eu interdum eu tincidunt in leo maecenas pulvinar lobortis est phasellus sit amet erat nulla tempus vivamus in felis eu sapien cursus vestibulum proin eu mi"
+ },
+ {
+  "id": 5,
+  "name": "buzo nike blanco",
+  "price": 3144,
+  "discount": 25,
+  "image": "oferta6.jpg",
+  "category": "in-sale",
+  "description": "libero ut massa volutpat convallis morbi odio odio elementum eu interdum eu tincidunt in leo maecenas pulvinar lobortis est phasellus sit amet erat nulla tempus vivamus in felis eu sapien cursus vestibulum proin eu mi"
+ },
+ {
+  "id": 6,
+  "name": "buzo nike blanco",
+  "price": 3144,
+  "discount": 25,
+  "image": "oferta7.jpg",
+  "category": "in-sale",
+  "description": "libero ut massa volutpat convallis morbi odio odio elementum eu interdum eu tincidunt in leo maecenas pulvinar lobortis est phasellus sit amet erat nulla tempus vivamus in felis eu sapien cursus vestibulum proin eu mi"
+ },
+ {
+  "id": 7,
+  "nombre": "asdasdasd",
+  "precio": "1111",
+  "descuento": "12",
+  "image": "image-1720849330080.png",
+  "categoria": "in-sale",
+  "description": "asdasdasd"
+ }
+]

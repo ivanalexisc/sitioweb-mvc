@@ -28,5 +28,11 @@
   "email": "potiarioli@gmail.com",
   "domicilio": "lalalala",
   "password": "$2a$10$7Xj/22iILAuXVsvcd0LiMuIrvctzglmcsHNoNdiQ209dOphRXszlW"
+ },
+ {
+  "nombre": "alejo flores",
+  "email": "alejoflores@gmail.com",
+  "domicilio": "calle falsa 123",
+  "password": "$2a$10$w2Anod4zVtZpsOW5jDFhe.GKlCgFnCuGGg056ufleLVflwCt6E2aS"
  }
 ]

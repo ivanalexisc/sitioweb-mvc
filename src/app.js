@@ -36,6 +36,7 @@ saveUninitialized: true
 app.use(log);
 
 
+
 app.use('/', indexRouter);
 app.use('/users', usersRouter);
 app.use('/products', productsRouter);
