@@ -6,24 +6,22 @@
     <%- include('partials/header'); %>
     
     <main>
-        <h2>Ofertas del dia!</h2>
+        <h2 class="title">Ofertas del dia!</h2>
         <section class="ofertas">
             <% products.forEach(producto => {%>
-            <div class="oferta_ind">
-                <a href="/products/detail/<%= producto.id %> ">
-                <img src="/images/<%= producto.image %> " alt="oferta1">
-                </a>            
+                <article class="oferta">
+                    <a href="/products/detail/<%= producto.id %> "><figure><img src="/images/<%= producto.image %> " alt="oferta1"></figure></a>
+                
+                            
                 <div class="descr_ofer">
                     <div class="p_de_ofer">
-                        <p class="nombre_prod"><%= producto.name %></p>
-                        <p class="off"><%= producto.price %> $</p>
-                    
+                        <h2 class="nombre_prod"><%= producto.name %></h2>
+                        <p class="off"><%= producto.price %> $</p>   
                     </div> 
-                    <a href=""><img src="/images/carrito.png" alt="carrito"></a>
+                   <a  href=""><img class="button_personalizado" src="/images/carrito.png" alt="carrito"></a>
                 </div>
-            </div>
+            </article>
             <% }) %>
-            
         </section>
     </main>
 
