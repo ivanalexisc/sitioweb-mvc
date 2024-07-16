@@ -33,11 +33,11 @@ const controller = {
         console.log('Archivo recibido: ', req.file);
         let newProduct = {
             id:products[products.length -1].id + 1,
-            nombre:req.body.name,
-            precio:req.body.price,
-            descuento:req.body.discount,
+            name:req.body.name,
+            price:req.body.price,
+            discount:req.body.discount,
             image: req.file.filename,
-            categoria:req.body.category,
+            category:req.body.category,
             description:req.body.description
            
         }

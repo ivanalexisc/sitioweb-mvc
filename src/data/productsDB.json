@@ -10,7 +10,7 @@
  },
  {
   "id": 2,
-  "name": "buzo nike blanco",
+  "name": "remera nike azul",
   "price": 3144,
   "discount": 25,
   "image": "oferta2.jpg",
@@ -19,7 +19,7 @@
  },
  {
   "id": 3,
-  "name": "buzo nike blanco",
+  "name": "remera nike roja",
   "price": 3144,
   "discount": 25,
   "image": "oferta3.jpg",
@@ -28,7 +28,7 @@
  },
  {
   "id": 4,
-  "name": "buzo nike blanco",
+  "name": "buzo nike verde",
   "price": 3144,
   "discount": 25,
   "image": "oferta4.jpg",
@@ -55,11 +55,11 @@
  },
  {
   "id": 7,
-  "nombre": "asdasdasd",
-  "precio": "1111",
-  "descuento": "12",
+  "name": "asdasdasd",
+  "price": "1111",
+  "discount": "12",
   "image": "image-1720849330080.png",
-  "categoria": "in-sale",
+  "category": "in-sale",
   "description": "asdasdasd"
  }
 ]
