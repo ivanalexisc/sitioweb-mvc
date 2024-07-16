@@ -61,7 +61,7 @@ const controller = {
         for (let i = 0; i < products.length; i++) {
             if (products[i].id == req.params.id)
                 if(!req.session.usuario){
-                    res.render('login', { message: 'Debes iniciar sesión para acceder.' })
+                    res.render('login')
                 }else{
                     res.render('productEdit', { producto: products[i] })
                 }
