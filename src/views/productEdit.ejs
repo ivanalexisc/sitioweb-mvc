@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
-<%- include('partials/head', {title: 'Index' }); %>
+<%- include('partials/head', {title: 'Formulario de edicion' }); %>
 
     <body>
 
@@ -14,8 +14,9 @@
                 </ul>
                 <% }) %>
                 <% } %>
-        <form action="/products/store" enctype="multipart/form-data" method="POST" class="form__register">
-            <h1>Formulario de creacion de productos</h1>
+        
+                <form action="/products/detail/<%= producto.id %>/update" enctype="multipart/form-data" method="POST" class="form__register">
+            <h1>Formulario de Edicion  de productos</h1>
             <label>
                 <h4>Nombre del producto:</h4> <input class="completar" type="text" name="name">
             </label>

@@ -22,11 +22,7 @@ body{
     display: flex;
     flex-wrap: wrap;
 }
-.container__menu .nav2{
-    width: 100%;
-    display: flex;
-    flex-wrap: wrap;
-}
+
 .nav1 a{
     color: #111111;
     width: 100%;
@@ -34,29 +30,14 @@ body{
     align-items: center;
     padding: 2%;
 }
-.nav2 a{
-    color:#111111;
-    width: 100%;
-    text-align: center;
-    align-items: center;
-    padding: 2%;
-}
+
 .nav1 a:hover{
     transform: scale(1.1);
     transition: .1s;
     color: white;
 }
-.nav2 a:hover{
-    transform: scale(1.1);
-    transition: .1s;
-    color: white;
-}
-.container__menu .nav2{
-    width: 100%;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-}
+
+
 #Buscador {
     font-family: 'Barlow', sans-serif;
     width: 100%;
@@ -243,10 +224,7 @@ footer{
         font-size: 1rem;
         
     }
-    .nav2 a {
-        font-size: 1rem;
-        
-    }
+    
     .container__menu .nav1{ 
         width: 50%; 
         text-align: center;
@@ -255,12 +233,7 @@ footer{
         grid-template-columns: 1fr 1fr 1fr;
     }
 
-    .container__menu .nav2{
-        width: 50%; 
-        text-align: center;
-        display: grid;
-        grid-template-columns: 1fr 1fr 1fr;
-    }
+   
 
 
     .ofertas{

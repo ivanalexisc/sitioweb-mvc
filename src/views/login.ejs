@@ -6,6 +6,9 @@
 
     <div class="login__content fixed-fullscreen">
     <div class="main_login">
+        <% if (message) { %>
+            <p><%= message %></p>
+        <% } %>
         <% if(typeof errors != "undefined") { %> 
             <% errors.forEach(error => { %>
                 <ul>    

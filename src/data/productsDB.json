@@ -10,12 +10,12 @@
  },
  {
   "id": 2,
-  "name": "remera nike azul",
-  "price": 3144,
-  "discount": 25,
-  "image": "oferta2.jpg",
+  "name": "yingu",
+  "price": 1221,
+  "discount": 12,
+  "image": "image-1721111727482.jpg",
   "category": "in-sale",
-  "description": "libero ut massa volutpat convallis morbi odio odio elementum eu interdum eu tincidunt in leo maecenas pulvinar lobortis est phasellus sit amet erat nulla tempus vivamus in felis eu sapien cursus vestibulum proin eu mi"
+  "description": "asdasda"
  },
  {
   "id": 3,
@@ -54,12 +54,12 @@
   "description": "libero ut massa volutpat convallis morbi odio odio elementum eu interdum eu tincidunt in leo maecenas pulvinar lobortis est phasellus sit amet erat nulla tempus vivamus in felis eu sapien cursus vestibulum proin eu mi"
  },
  {
-  "id": 7,
-  "name": "asdasdasd",
-  "price": "1111",
-  "discount": "12",
-  "image": "image-1720849330080.png",
+  "id": 8,
+  "name": "Alejo",
+  "price": 1500,
+  "discount": 20,
+  "image": "image-1721103962818.jpg",
   "category": "in-sale",
-  "description": "asdasdasd"
+  "description": "alejo es re gay"
  }
 ]
