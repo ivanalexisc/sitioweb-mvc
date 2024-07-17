@@ -15,7 +15,9 @@
             <a href="" class="button_personalizado">Comprar ahora</a>
             <a href="" class="button_personalizado">Agregar al carrito</a>
             <a href="/products/detail/edit/<%= producto.id %>" class="button_personalizado">Editar producto</a>
-            <a href="/delete" class="button_personalizado">Eliminar producto</a>
+            <form action="/products/detail/<%= producto.id %>/delete?_method=DELETE" method="POST" style="display:inline;">
+                <button type="submit" class="button_personalizado">Eliminar producto</button>
+            </form>
         </div>
     </section>
     <%- include('partials/footer')%>

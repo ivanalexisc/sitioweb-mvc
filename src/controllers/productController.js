@@ -101,6 +101,15 @@ const controller = {
     } else {
         res.redirect("productEdit")
     }
+    },
+    delete:(req,res)=>{
+        // guardo el id del producto a borrar
+      const productDeleted = req.params.id;
+      // borro el producto del json
+      const productsFinal = products.filter(product => product.id != productDeleted);
+      // modifico el json sin el producto eliminado
+      guardar(productsFinal);
+      res.redirect('/products')  
     }
 };
 

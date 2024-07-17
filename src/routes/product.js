@@ -47,7 +47,5 @@ router.post('/detail/:id/update', upload.single("image"),validator.product, prod
 
 
 router.post('/store',upload.single('image'), validator.product, productController.store);
-router.delete('/detail/:id/delete',function(req,res){
-  console.log("DELETE!!!!")
-} )
+router.delete('/detail/:id/delete', productController.delete);
 module.exports = router;
