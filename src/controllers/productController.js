@@ -39,14 +39,9 @@ const controller = {
             console.log('Campos recibidos: ', req.body);
             console.log('Archivo recibido: ', req.file);
             let newProduct = {
-                id: products[products.length - 1].id + 1,
-                name: req.body.name,
-                price: parseFloat(req.body.price),
-                discount: parseInt(req.body.discount),
-                image: req.file.filename,
-                category: req.body.category,
-                description: req.body.description
-
+                id: products[products.length - 1].id + 1, 
+		        ...req.body,
+		        image: req.file.filename
             }
             console.log(newProduct);
             products.push(newProduct);

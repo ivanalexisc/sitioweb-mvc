@@ -61,5 +61,14 @@
   "image": "image-1721103962818.jpg",
   "category": "in-sale",
   "description": "alejo es re gay"
+ },
+ {
+  "id": 9,
+  "name": "perrito fachero xd",
+  "price": "1221",
+  "discount": "12",
+  "category": "in-sale",
+  "description": "asasasas",
+  "image": "image-1721276877129.jpg"
  }
 ]
