@@ -34,5 +34,11 @@
   "email": "alejoflores@gmail.com",
   "domicilio": "calle falsa 123",
   "password": "$2a$10$w2Anod4zVtZpsOW5jDFhe.GKlCgFnCuGGg056ufleLVflwCt6E2aS"
+ },
+ {
+  "nombre": "alejo",
+  "email": "alejo1@gmail.com",
+  "domicilio": "oroverde",
+  "password": "$2a$10$iNIYB2Z9/b7q4pJ/VYMHzu4IdMXZ8uERaiwx3/RTtEvlhRvgnEVu6"
  }
 ]
