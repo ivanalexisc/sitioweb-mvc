@@ -49,11 +49,12 @@
 }
 .title_login{
     font-size: 35px;
+    color: #f2f5ef;
 }
 
 .inp{
     padding-bottom: 10px;
-    border-bottom: 2px solid #eee;
+    border-bottom: 2px solid #f2f5ef;
 }
 .input{
     border: none;
@@ -82,6 +83,7 @@
     margin-top: 30px;
     letter-spacing: 0.5px;
     font-size: 14px;
+    color: #f2f5ef;
 }
 .link {
     color: #0ef;

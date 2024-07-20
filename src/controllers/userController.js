@@ -45,6 +45,7 @@ const controller ={
             let user = users.find(usuario => usuario.email == req.body.email);
             console.log(user);
             let comparePass = bcrypt.compare(req.body.pass, user.pass);
+            console.log(comparePass)
             if (comparePass == false){
                 return res.render('login', {errors: [
                     {msg: 'Credenciales invalidas'}
@@ -56,7 +57,7 @@ const controller ={
                 //si se tildo "recordarme" se guarda la cookie y puedo cerrar el navegador manteniendo la sesion iniciada, si no tildo "recordarme" no se guarda la cookie
                 if (req.body.recordarme != undefined) {
                     //quiero crear la cookie
-                    res.cookie("recordarme",user.email,{maxAge: 1000 * 60 })
+                    res.cookie("recordarme",user.username,{maxAge: 1000 * 60 })
                 }
                 res.redirect('/products');
             }
@@ -68,7 +69,7 @@ const controller ={
     logout: (req,res) => {
         req.session.destroy();
 
-        res.clearCookie('recordame');
+        res.clearCookie('recordarme');
         
         res.redirect('/products');
     }
