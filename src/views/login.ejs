@@ -2,8 +2,6 @@
 <html lang="en">
     <%- include('partials/head'); %>
 <body class="body__login">
-    
-<div class="login__content">
     <% if(typeof errors != "undefined") { %> 
         <% errors.forEach(error => { %>
             <ul>    
@@ -12,7 +10,8 @@
                 </li>
             </ul>
             <% }) %>
-            <% } %>
+            <% } %>  
+<div class="login__content">
     <form action="/users/login" method="POST" class="form">
      <h1 class="title_login">Login</h1>
      <div class="inp">
@@ -20,7 +19,7 @@
         <i class="fa-solid fa-user"></i>
     </div>
     <div class="inp">
-        <input type="password" name="password"  class="input" placeholder="Contraseña">
+        <input type="password" name="pass"  class="input" placeholder="Contraseña">
         <i class="fa-solid fa-lock"></i>
     </div>
     <button class="submit" type="submit">Iniciar Sesion</button>

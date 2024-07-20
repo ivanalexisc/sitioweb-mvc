@@ -40,7 +40,7 @@ module.exports = {
       body('email')
       .notEmpty()
       .withMessage('Completar email'),
-      body('password')
+      body('pass')
       .notEmpty()
       .withMessage('Completar contraseña'),
     ]

@@ -30,7 +30,7 @@ const controller ={
            email: req.body.email,
            username: req.body.username,
            domicilio: req.body.domicilio,
-           password:bcrypt.hashSync(newPassword, 10)
+           pass:bcrypt.hashSync(newPassword, 10)
       
         }
         users.push(newUser);
@@ -38,19 +38,32 @@ const controller ={
         res.redirect('/users/login');
     },
     login: (req, res) => {
-        let errors = (validationResult(req));
-        if(errors.isEmpty()){
+        let errors = validationResult(req);
+        if (errors.isEmpty()) {
+            console.log('Email recibido:', req.body.email);
+        console.log('Contraseña recibida:', req.body.pass);
             let user = users.find(usuario => usuario.email == req.body.email);
-            req.session.usuario = user.username;
-            if (req.body.recordarme){
-                res.cookie('recordame', user.username, { maxAge: 1000 * 60 * 60 * 24 * 365});
+            console.log(user);
+            let comparePass = bcrypt.compare(req.body.pass, user.pass);
+            if (comparePass == false){
+                return res.render('login', {errors: [
+                    {msg: 'Credenciales invalidas'}
+                ]}) 
+            }else {
+                req.session.usuario = user.username; //guardo en session el username de usuario
+		
+                //SESSION Y COOKIE SON 2 COSAS DISTINTAS, PUEDO INICIAR SESION SIN GUARDAR COOKIE.
+                //si se tildo "recordarme" se guarda la cookie y puedo cerrar el navegador manteniendo la sesion iniciada, si no tildo "recordarme" no se guarda la cookie
+                if (req.body.recordarme != undefined) {
+                    //quiero crear la cookie
+                    res.cookie("recordarme",user.email,{maxAge: 1000 * 60 })
+                }
+                res.redirect('/products');
             }
-        
-            res.redirect('/products')
-        } else {
+          
+        } else{ //si hay errores (del validator, osea los que no sean de credenciales) tira esos errores
             return res.render('login', {errors: errors.errors})
         }
-    
     },
     logout: (req,res) => {
         req.session.destroy();
