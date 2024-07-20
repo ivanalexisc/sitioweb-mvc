@@ -1,7 +1,7 @@
 .body__login {
     width: 100vw;
     height: 100vh;
-    background-color: #081b29;
+    background-color: #45592d;
     display: grid;
     justify-content: center;
     align-content: center;
@@ -17,8 +17,8 @@
     height: 65vh;
     display: grid;
     grid-template-columns: 1fr 1fr;
-    border: 3px solid #00ffff;
-    box-shadow: 0 0 50px 0 #00a6bc;
+    border: 3px solid #f4ede4    ;
+    box-shadow: 0 0 50px 0 #f4ede4;
 }
 .banner {
     position: absolute;
@@ -26,7 +26,7 @@
     right: 0;
     width: 450px;
     height: 100%;
-    background: linear-gradient(to right, #0ef, #c800ff);
+    background: linear-gradient(to right, #789a4e, #f4ede4);
     clip-path: polygon(0 0 , 100% 0, 100% 100%, 60% 100%);
     padding-right: 70px;
     text-align: right;
@@ -63,7 +63,7 @@
     margin-top: 40px;
     padding-right: 10px;
     font-size: 17px;
-    color: #0ef;
+    color: #45592d;
 }
 
 .submit {
@@ -76,7 +76,7 @@
     border-radius: 40px;
     letter-spacing: 1px;
     cursor: pointer;
-    background: linear-gradient(45deg, #0ef, #c800ff);
+    background: linear-gradient(45deg, #789a4e, #f4ede4);
 }
 .footer{
     margin-top: 30px;
