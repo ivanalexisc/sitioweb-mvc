@@ -1,42 +1,39 @@
 <!DOCTYPE html>
 <html lang="en">
     <%- include('partials/head'); %>
-<body>
+<body class="body__login">
     
+<div class="login__content">
+    <% if(typeof errors != "undefined") { %> 
+        <% errors.forEach(error => { %>
+            <ul>    
+                <li>
+                    <%= error.msg %>
+                </li>
+            </ul>
+            <% }) %>
+            <% } %>
+    <form action="/users/login" method="POST" class="form">
+     <h1 class="title_login">Login</h1>
+     <div class="inp">
+        <input type="email" name="email"  class="input" placeholder="Usuario">
+        <i class="fa-solid fa-user"></i>
+    </div>
+    <div class="inp">
+        <input type="password" name="password"  class="input" placeholder="Contraseña">
+        <i class="fa-solid fa-lock"></i>
+    </div>
+    <button class="submit" type="submit">Iniciar Sesion</button>
+    <p class="footer">No tienes una cuenta? <a href="/users/register">Registrate</a></p>
+</form>     
 
-    <div class="login__content fixed-fullscreen">
-    <div class="main_login">
-       
-        <% if(typeof errors != "undefined") { %> 
-            <% errors.forEach(error => { %>
-                <ul>    
-                    <li>
-                        <%= error.msg %>
-                    </li>
-                </ul>
-                <% }) %>
-                <% } %>
-        <form action="/users/login" method="POST" class="login">
-           
-            <h1>BIENVENIDO</h1>
-            <label><p>Email</p><input class="email_y_pw" type="email" name="email" placeholder="Email"></label>
-            <label><p>Contraseña</p><input class="email_y_pw" type="password" name="password" placeholder="Contraseña"></label>
-        <div class="recordarme">
-            <div class="recordarme1">
-                <label ><p>Recordarmee</p></label>
-                <input type="checkbox" name="recordarme" >
-            </div>
-            <div class="recordarme2">
-                
-                <button type="submit" class="button_login">Ingresar</button>  
-            </div>
-              
-        </div>
-            
-        </form>
-    </main>
+    <div></div>
+    <div class="banner">
+        <h1 class="wel_text"></h1>
+    </div>
+      
 </div>
-
+    
 
    
         

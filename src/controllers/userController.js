@@ -29,6 +29,7 @@ const controller ={
            nombre: req.body.nameUser,
            email: req.body.email,
            domicilio: req.body.domicilio,
+           username: req.body.username,
            password:bcrypt.hashSync(newPassword, 10)
       
         }
@@ -40,9 +41,9 @@ const controller ={
         let errors = (validationResult(req));
         if(errors.isEmpty()){
             let user = users.find(usuario => usuario.email == req.body.email);
-            req.session.usuario = user.email;
+            req.session.usuario = user.username;
             if (req.body.recordarme){
-                res.cookie('recordame', user.email, { maxAge: 1000 * 60 * 60 * 24 * 365});
+                res.cookie('recordame', user.username, { maxAge: 1000 * 60 * 60 * 24 * 365});
             }
         
             res.redirect('/products')

@@ -1,77 +1,89 @@
+.body__login {
+    width: 100vw;
+    height: 100vh;
+    background-color: #081b29;
+    display: grid;
+    justify-content: center;
+    align-content: center;
+}
+
+::-webkit-input-placeholder{
+    color: #eee;
+}
 
 .login__content{
-   
-   display: flex;
-   flex-direction: column;
-   margin: 1px;
-
-   
-  
+    position: relative; 
+    width: 800px;
+    height: 65vh;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    border: 3px solid #00ffff;
+    box-shadow: 0 0 50px 0 #00a6bc;
 }
-
-.login h1 {
-    color: white;
-    text-align: center;
-}
-.login label p {
-    color: white;
-}
-
-/*-------------------MAIN---------------*/
- .login__content .main_login{
-    opacity: 0.6;
+.banner {
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 450px;
+    height: 100%;
+    background: linear-gradient(to right, #0ef, #c800ff);
+    clip-path: polygon(0 0 , 100% 0, 100% 100%, 60% 100%);
+    padding-right: 70px;
+    text-align: right;
     display: flex;
-    margin-top: 20vh;
     flex-direction: column;
-   
-    
-   
+    justify-content: center;
+    align-items: flex-end;
 }
 
-
-.email_y_pw{
-   
-    border-radius: 2px;
-    margin: 5px 0px 20px 0px;
-    padding: 10px;
-    border: 0px;
+.wel_text {
+    font-size: 40px;
+    margin-top: -50px;
+    line-height: 50px;
 }
-.recordarme1 {
-    width: 45%;
-}
-.recordarme2 {
-    width: 54%;
-}
-.recordarme{
+.form{
     display: flex;
-    justify-content: end;
-    flex-direction: row;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
 }
-.recordarme input{
-    margin-top: 21px;
+.title_login{
+    font-size: 35px;
 }
- .button_login{
-    width: 50%;
-    background-color: #8500aa;
-    color: white;
-    border-radius: 2px;
-    margin: 20px 0px 20px 10px;
-    padding: 10px;
-    border: 0px;
-}
-/*-------------------FIN MAIN---------------*/
-@media (min-width: 768px){
-    .button_login {
-        width:50%;
-    }
-    .login__content .main_login .login {
-        width: 70vw;
-        margin: auto;
-        margin-top: 12vw;
 
-    }
-    .email_y_pw{
-        width: 67vw;
-    }
+.inp{
+    padding-bottom: 10px;
+    border-bottom: 2px solid #eee;
+}
+.input{
+    border: none;
+    outline: none;
+    background: none;
+    width: 260px;
+    margin-top: 40px;
+    padding-right: 10px;
+    font-size: 17px;
+    color: #0ef;
+}
 
+.submit {
+    border: none;
+    outline: none;
+    width: 288px;
+    margin-top: 25px;
+    padding: 10px 0;
+    font-size: 20px;
+    border-radius: 40px;
+    letter-spacing: 1px;
+    cursor: pointer;
+    background: linear-gradient(45deg, #0ef, #c800ff);
+}
+.footer{
+    margin-top: 30px;
+    letter-spacing: 0.5px;
+    font-size: 14px;
+}
+.link {
+    color: #0ef;
+    text-decoration: none;
 }

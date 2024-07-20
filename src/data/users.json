@@ -1,44 +1,30 @@
 [
  {
   "nombre": "ivan chanenko",
-  "email": "iac_1999@hotmail.com",
-  "domicilio": "la paz111",
-  "password": "$2b$10$3L/figXrl5cMtsMeld899urx7hkRQ0d5zctuT1t.xkZV0ZmhsWsa2"
- },
- {
-  "nombre": "ivan chanenko",
   "email": "ivanalexischanenko@gmail.com",
+  "user": "ivanchanenko",
   "domicilio": "1234",
   "password": "$2a$10$tLN.PIsaixVkHrKsn3xJhu9M6wqioKohe72wAATSjFsgqJc5A4NCi"
  },
  {
-  "nombre": "facundo cali",
-  "email": "facucali@gmail.com",
-  "domicilio": "lasala12",
-  "password": "$2a$10$t/Anr.WOvRyu3Xtg0OGseudUse5OCkrDRX8AcZ3AwmQJZbgNNt3BK"
- },
- {
-  "nombre": "facu cali",
-  "email": "faculogo@gmail.com",
-  "domicilio": "loap 12",
-  "password": "$2a$10$BxRkaNzB8AuRx0RLBKlwMO6Y8C9YJb2cpZrKDr67fsQ9wgkU0Mkku"
- },
- {
   "nombre": "poti arioli",
   "email": "potiarioli@gmail.com",
+  "user": "Potiarioli",
   "domicilio": "lalalala",
   "password": "$2a$10$7Xj/22iILAuXVsvcd0LiMuIrvctzglmcsHNoNdiQ209dOphRXszlW"
  },
  {
   "nombre": "alejo flores",
   "email": "alejoflores@gmail.com",
+  "user": "Alejoflores",
   "domicilio": "calle falsa 123",
   "password": "$2a$10$w2Anod4zVtZpsOW5jDFhe.GKlCgFnCuGGg056ufleLVflwCt6E2aS"
  },
  {
-  "nombre": "alejo",
-  "email": "alejo1@gmail.com",
-  "domicilio": "oroverde",
-  "password": "$2a$10$iNIYB2Z9/b7q4pJ/VYMHzu4IdMXZ8uERaiwx3/RTtEvlhRvgnEVu6"
+  "nombre": "jere leriche",
+  "email": "jereleriche@gmail.com",
+  "username": "Jereleriche",    
+  "domicilio": "lapaz 222",
+  "password": "$2a$10$v0M/DzeIHh.Ma.SHAgEEZ.njg7r6VTUvqfVVt/xVk/WVCp5UVLl4u"
  }
 ]
