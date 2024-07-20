@@ -1,9 +1,16 @@
 [
-{
+ {
   "nombre": "ivan chanenko",
   "email": "ivanalexischanenko@gmail.com",
   "username": "ivanalexisc",
   "domicilio": "salta 279",
   "pass": "$2a$10$qPwi9gulaQJKp4HO1sJSN.276fsotZKKywjCYAlR/aWaMV5G1NAHm"
+ },
+ {
+  "nombre": "alejo flores",
+  "email": "alejoflores@gmail.com",
+  "username": "alejoflores",
+  "domicilio": "salta 222",
+  "pass": "$2a$10$UOd3p7QI6wRn7phkvhpmaOHnXJ3.mDWfe4ZpKGVG.R0gxQbiq2NCC"
  }
 ]

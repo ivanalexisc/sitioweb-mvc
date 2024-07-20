@@ -37,33 +37,46 @@ const controller ={
         guardarUser(users);
         res.redirect('/users/login');
     },
-    login: (req, res) => {
+    login: async (req, res) => {
         let errors = validationResult(req);
+        
         if (errors.isEmpty()) {
             console.log('Email recibido:', req.body.email);
-        console.log('Contraseña recibida:', req.body.pass);
+            console.log('Contraseña recibida:', req.body.pass);
+            
             let user = users.find(usuario => usuario.email == req.body.email);
-            console.log(user);
-            let comparePass = bcrypt.compare(req.body.pass, user.pass);
-            console.log(comparePass)
-            if (comparePass == false){
-                return res.render('login', {errors: [
-                    {msg: 'Credenciales invalidas'}
-                ]}) 
-            }else {
-                req.session.usuario = user.username; //guardo en session el username de usuario
-		
-                //SESSION Y COOKIE SON 2 COSAS DISTINTAS, PUEDO INICIAR SESION SIN GUARDAR COOKIE.
-                //si se tildo "recordarme" se guarda la cookie y puedo cerrar el navegador manteniendo la sesion iniciada, si no tildo "recordarme" no se guarda la cookie
-                if (req.body.recordarme != undefined) {
-                    //quiero crear la cookie
-                    res.cookie("recordarme",user.username,{maxAge: 1000 * 60 })
-                }
-                res.redirect('/products');
+    
+            if (!user) {
+                return res.render('login', { errors: [{ msg: 'Credenciales inválidas' }] });
             }
-          
-        } else{ //si hay errores (del validator, osea los que no sean de credenciales) tira esos errores
-            return res.render('login', {errors: errors.errors})
+    
+            console.log(user);
+    
+            try {
+                let comparePass = await bcrypt.compare(req.body.pass, user.pass);
+    
+                console.log(comparePass);
+    
+                if (!comparePass) {
+                    return res.render('login', { errors: [{ msg: 'Credenciales inválidas' }] });
+                } else {
+                    req.session.usuario = user.username; // Guardar en sesión el username del usuario
+    
+                    // Si se tildó "recordarme", se guarda la cookie
+                    if (req.body.recordarme) {
+                        // Crear la cookie con un tiempo de expiración (ejemplo: 1 minuto)
+                        res.cookie('recordarme', user.username, { maxAge: 1000 * 60 });
+                    }
+    
+                    res.redirect('/products');
+                }
+            } catch (error) {
+                console.error('Error al comparar contraseñas:', error);
+                return res.render('login', { errors: [{ msg: 'Error al iniciar sesión' }] });
+            }
+        } else {
+            // Si hay errores de validación (no de credenciales)
+            return res.render('login', { errors: errors.errors });
         }
     },
     logout: (req,res) => {
