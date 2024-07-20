@@ -28,8 +28,8 @@ const controller ={
         let newUser = {
            nombre: req.body.nameUser,
            email: req.body.email,
-           domicilio: req.body.domicilio,
            username: req.body.username,
+           domicilio: req.body.domicilio,
            password:bcrypt.hashSync(newPassword, 10)
       
         }

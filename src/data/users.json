@@ -2,21 +2,21 @@
  {
   "nombre": "ivan chanenko",
   "email": "ivanalexischanenko@gmail.com",
-  "user": "ivanchanenko",
+  "username": "ivanchanenko",
   "domicilio": "1234",
   "password": "$2a$10$tLN.PIsaixVkHrKsn3xJhu9M6wqioKohe72wAATSjFsgqJc5A4NCi"
  },
  {
   "nombre": "poti arioli",
   "email": "potiarioli@gmail.com",
-  "user": "Potiarioli",
+  "username": "Potiarioli",
   "domicilio": "lalalala",
   "password": "$2a$10$7Xj/22iILAuXVsvcd0LiMuIrvctzglmcsHNoNdiQ209dOphRXszlW"
  },
  {
   "nombre": "alejo flores",
   "email": "alejoflores@gmail.com",
-  "user": "Alejoflores",
+  "username": "Alejoflores",
   "domicilio": "calle falsa 123",
   "password": "$2a$10$w2Anod4zVtZpsOW5jDFhe.GKlCgFnCuGGg056ufleLVflwCt6E2aS"
  },
