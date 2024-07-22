@@ -1,4 +1,9 @@
 const { body } = require('express-validator');
+const fs = require('fs');
+const bcrypt = require('bcryptjs');
+const path = require('path');
+const usersFileJson = path.join(__dirname, '../data/users.json');
+const users =  JSON.parse(fs.readFileSync(usersFileJson, 'utf-8'));
 module.exports = {
     product: [
       body('name')
@@ -38,10 +43,27 @@ module.exports = {
     ],
     login: [
       body('email')
-      .notEmpty()
-      .withMessage('Completar email'),
-      body('pass')
-      .notEmpty()
-      .withMessage('Completar contraseña'),
+      .custom(function(value, {req}){
+        if(value){
+
+         let userFound = users.find(user => user.email == req.body.email);
+         if (userFound) {
+
+          let resultado = bcrypt.compareSync(req.body.pass,userFound.pass);
+
+          return resultado;
+
+
+         } else {
+          return false 
+         }
+
+        } else {
+
+          return false
+        }
+      })
+      .withMessage('El nombre de usuario y la contraseña que ingresaste no coinciden'),
+      
     ]
 };

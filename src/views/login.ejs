@@ -2,20 +2,15 @@
 <html lang="en">
     <%- include('partials/head'); %>
 <body class="body__login">
-    <% if(typeof errors != "undefined") { %> 
-        <% errors.forEach(error => { %>
-            <ul>    
-                <li>
-                    <%= error.msg %>
-                </li>
-            </ul>
-            <% }) %>
-            <% } %>  
+    
 <div class="login__content">
     <form action="/users/login" method="POST" class="form">
+        <% if(typeof errors != "undefined") { %> 
+            <p><%= errors %></p>
+                <% } %>  
      <h1 class="title_login">Login</h1>
      <div class="inp">
-        <input type="email" name="email"  class="input" placeholder="Usuario">
+        <input type="email" name="email" class="input" placeholder="Usuario"  value="<%= typeof oldEmail != "undefined"?oldEmail: ""  %>" >
         <span class="material-symbols-outlined">
             person
             </span>

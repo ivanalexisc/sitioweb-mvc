@@ -12,5 +12,12 @@
   "username": "alejoflores",
   "domicilio": "salta 222",
   "pass": "$2a$10$UOd3p7QI6wRn7phkvhpmaOHnXJ3.mDWfe4ZpKGVG.R0gxQbiq2NCC"
+ },
+ {
+  "nombre": "Ivan alexis",
+  "email": "iac_1999@hotmail.com",
+  "username": "ivanalexischanenko",
+  "domicilio": "lapaz999",
+  "pass": {}
  }
 ]

@@ -30,54 +30,30 @@ const controller ={
            email: req.body.email,
            username: req.body.username,
            domicilio: req.body.domicilio,
-           pass:bcrypt.hashSync(newPassword, 10)
+           pass:bcrypt.hash(newPassword, 10)
       
         }
         users.push(newUser);
         guardarUser(users);
         res.redirect('/users/login');
     },
-    login: async (req, res) => {
-        let errors = validationResult(req);
-        
-        if (errors.isEmpty()) {
-            console.log('Email recibido:', req.body.email);
-            console.log('Contraseña recibida:', req.body.pass);
+    login:  (req, res) => {
+
+        let result = validationResult(req);
+        if (result.isEmpty()) {
             
-            let user = users.find(usuario => usuario.email == req.body.email);
-    
-            if (!user) {
-                return res.render('login', { errors: [{ msg: 'Credenciales inválidas' }] });
+            let userFound = users.find(usuario => usuario.email == req.body.email);
+     
+            let emailFromUser = userFound.email;
+            req.session.usuario = emailFromUser;
+            if (req.body.recordarme != undefined) {
+             res.cookie("recordame", userFound.email,{maxAge: 1000*60})
             }
-    
-            console.log(user);
-    
-            try {
-                let comparePass = await bcrypt.compare(req.body.pass, user.pass);
-    
-                console.log(comparePass);
-    
-                if (!comparePass) {
-                    return res.render('login', { errors: [{ msg: 'Credenciales inválidas' }] });
-                } else {
-                    req.session.usuario = user.username; // Guardar en sesión el username del usuario
-    
-                    // Si se tildó "recordarme", se guarda la cookie
-                    if (req.body.recordarme) {
-                        // Crear la cookie con un tiempo de expiración (ejemplo: 1 minuto)
-                        res.cookie('recordarme', user.username, { maxAge: 1000 * 60 });
-                    }
-    
-                    res.redirect('/products');
-                }
-            } catch (error) {
-                console.error('Error al comparar contraseñas:', error);
-                return res.render('login', { errors: [{ msg: 'Error al iniciar sesión' }] });
-            }
+            res.redirect('/products')
         } else {
-            // Si hay errores de validación (no de credenciales)
-            return res.render('login', { errors: errors.errors });
+            res.render('login', {errors: result.errors[0].msg, old: req.body.email});
         }
+        
     },
     logout: (req,res) => {
         req.session.destroy();
