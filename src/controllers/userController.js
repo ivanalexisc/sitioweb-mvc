@@ -14,6 +14,7 @@ let guardarUser = (users) => {
         JSON.stringify(users, null, " "),
         'utf-8'
     );
+    users = JSON.parse(fs.readFileSync(usersFileJson, 'utf-8'));
 };
 
 const controller ={
@@ -24,13 +25,13 @@ const controller ={
         res.render('login');
     },
     createNewUser: (req,res) => {
-        let newPassword = req.body.pass.toString();
+        let newPassword = bcrypt.hashSync(req.body.pass, 10);
         let newUser = {
            nombre: req.body.nameUser,
            email: req.body.email,
            username: req.body.username,
            domicilio: req.body.domicilio,
-           pass:bcrypt.hash(newPassword, 10)
+           pass:newPassword
       
         }
         users.push(newUser);

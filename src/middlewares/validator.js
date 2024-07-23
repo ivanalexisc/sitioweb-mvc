@@ -43,14 +43,15 @@ module.exports = {
     ],
     login: [
       body('email')
-      .custom(function(value, {req}){
+      .custom(async function(value, {req}){
         if(value){
 
          let userFound = users.find(user => user.email == req.body.email);
          if (userFound) {
-
-          let resultado = bcrypt.compareSync(req.body.pass,userFound.pass);
-
+          let resultado =await  bcrypt.compare(req.body.pass,userFound.pass);
+          
+          console.log(userFound);
+          console.log(resultado);
           return resultado;
 
 
