@@ -25,7 +25,8 @@ const controller ={
         res.render('login');
     },
     createNewUser: (req,res) => {
-        let newPassword = bcrypt.hashSync(req.body.pass, 10);
+        let hash = bcrypt.genSaltSync(10);
+        let newPassword =  bcrypt.hashSync(req.body.pass, hash);
         let newUser = {
            nombre: req.body.nameUser,
            email: req.body.email,
@@ -40,15 +41,16 @@ const controller ={
     },
     login:  (req, res) => {
 
-        let result = validationResult(req);
+        let result =  validationResult(req);
+        console.log(result);
         if (result.isEmpty()) {
             
-            let userFound = users.find(usuario => usuario.email == req.body.email);
+            let userFound =  users.find(usuario => usuario.email == req.body.email);
      
             let emailFromUser = userFound.email;
             req.session.usuario = emailFromUser;
             if (req.body.recordarme != undefined) {
-             res.cookie("recordame", userFound.email,{maxAge: 1000*60})
+             res.cookie("recordame", userFound.email,{maxAge: 1000*60});
             }
             res.redirect('/products')
         } else {
