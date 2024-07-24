@@ -5,5 +5,33 @@
   "username": "Ivanalexisc",
   "domicilio": "espejo 3085",
   "pass": "$2a$10$zUthv6BA6/e8TS0QMEe0A.MdGyGKmJ9l0jYQ9s83mcS7zr5Svs/xi"
+ },
+ {
+  "nombre": "Micaela gonzalez ",
+  "email": "micagonzalez@gmail.com",
+  "username": "micalamaslinda",
+  "domicilio": "alday 11111",
+  "pass": "$2a$10$9BXL7nFKg13Po8G6zIJh5Oncoqk2RLKgRsCEGC.n7zn1c0R9VxIIy"
+ },
+ {
+  "nombre": "gabriela salvador",
+  "email": "gabrielasalvador@gmail.com",
+  "username": "gabrielasalva",
+  "domicilio": "la concha de tu madre 123",
+  "pass": "$2a$10$dhUGNDYdG3bfOJAC9g7cv.dSiHTdM/N1bAT7p/VShUFXhuSDYYS6S"
+ },
+ {
+  "nombre": "poti arioli",
+  "email": "potiarioli@gmail.com",
+  "username": "potiarioli",
+  "domicilio": "los tordos 1111",
+  "pass": "$2a$10$N6BP7cKwu9ql8m2zd1sgOOJ7si7awMbtuZXfBJi6A31FZZdTJa4ci"
+ },
+ {
+  "nombre": "alejo flores",
+  "email": "alejoflores@gmail.com",
+  "username": "Alejoflores",
+  "domicilio": "los tordos 123",
+  "pass": "$2a$10$93iUQd6nTmsxDmHnItfj1.tKAtOV5NH5ZgpASvkDkp0XO692yVF0u"
  }
 ]

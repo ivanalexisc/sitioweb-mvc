@@ -50,6 +50,7 @@ module.exports = {
          let userFound = await users.find(user => user.email == req.body.email);
          if (userFound) {
           let resultado =  bcrypt.compareSync(req.body.pass,userFound.pass);
+          console.log(req.body.pass)
           
           if(resultado){
             return true
@@ -59,7 +60,7 @@ module.exports = {
 
 
          } else {
-          throw new Error('El email no se encuentra en la base de datos');
+          throw new Error('Debes ingresar la contraseña');
          }
 
         } else {
