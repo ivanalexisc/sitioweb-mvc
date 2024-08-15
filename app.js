@@ -4,21 +4,21 @@ const path = require('path');
 const cookieParser = require('cookie-parser');
 const logger = require('morgan');
 const methodOverride = require('method-override');
-const log = require('./middlewares/log');
+const log = require('./src/middlewares/log');
 const session = require('express-session');
 const app = express();
 
 
 
-const indexRouter = require('./routes/index');
-const usersRouter = require('./routes/users');
-const productsRouter = require('./routes/product');
+const indexRouter = require('./src/routes/index');
+const usersRouter = require('./src/routes/users');
+const productsRouter = require('./src/routes/product');
 
 
 
 
 // view engine setup
-app.set('views', path.join(__dirname, '/views'));
+app.set('views', path.join(__dirname, 'src/views'));
 app.set('view engine', 'ejs');
 app.use(express.static('public'));
 app.use(logger('dev'));
