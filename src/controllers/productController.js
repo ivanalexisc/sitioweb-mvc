@@ -1,20 +1,23 @@
 const fs = require('fs');
 const path = require('path');
 const { body, validationResult } = require('express-validator');
+let {Product} = require('../database/models');
 
-const productsFileJson = path.join(__dirname, '../data/productsDB.json');
-const products = JSON.parse(fs.readFileSync(productsFileJson, 'utf-8'));
-let guardar = (products) => {
-    fs.writeFileSync(
-        path.join(__dirname, "../data/productsDb.json"),
-        JSON.stringify(products, null, " "),
-        "utf-8"
-    );
-};
 
 const controller = {
-    showProduct: (req, res) => {
-        res.render('index', { products });
+    showProduct: async (req, res) => {
+        // res.render('index', { products });
+        // try {
+            
+        //     const products = Product.findAll({include:['categoria', 'talle', 'color', 'users']})
+        //     // res.render('index', { products });
+        //     res.json(products);
+        // } catch (error) {
+        //     console.log(error);
+        // }
+
+
+
     },
     detail: (req, res) => {
         for (let i = 0; i < products.length; i++) {
