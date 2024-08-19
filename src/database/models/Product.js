@@ -1,7 +1,7 @@
 const {sequelize, DataTypes} = require('sequelize');
 
 module.exports = (sequelize, DataTypes) => {
-    const Product = sequelize.define('Product', {  // Cambié 'producto' a 'Product'
+    const product = sequelize.define('Product', {  // Cambié 'producto' a 'Product'
         precio: DataTypes.DECIMAL,
         nombre:DataTypes.STRING,
         cantidad: DataTypes.INTEGER,
@@ -13,6 +13,8 @@ module.exports = (sequelize, DataTypes) => {
         tableName:'productos',
         timestamps: false
     });
-
-    return Product;
+    product.associate = (models =>{
+        product.belongsTo(models.Categoria);
+    })
+    return product;
 };
