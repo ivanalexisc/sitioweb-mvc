@@ -7,16 +7,13 @@
        
         <form action="/users/register" method="POST" class="form__register">
             <h1>Registrate</h1>
-            <label><h4>Nombre y apellido:</h4> <input class="completar" type="text" name="nameUser"></label>
+            <label><h4>Nombre:</h4> <input class="completar" type="text" name="nameUser"></label>
+            <label><h4>Apellido:</h4> <input class="completar" type="text" name="apellidoUser"></label>
+            <label><h4>Direccion:</h4><input class="completar" type="text" name="direccion" ></label>
             <label><h4>Email:</h4><input class="completar" type="email" name="email" ></label>
-            <h4>Usuario</h4>
-            <input type="text" name="username" placeholder="username">
-            <h4>Domicilio</h4>
-            <input type="text" name="domicilio" placeholder="domicilio">
+           <label><h4>Contraseña:</h4><input class="completar" type="password" name="password"></labe>
             <h4>Elegí tu foto de usuario:</h4>
             <input type="file" name="fotousuario " id="foto_usuario" accept=".pdf,.jpg,.png">
-            <h4>Elegi tu contraseña</h4>
-            <label><h4>Contraseña:</h4><input class="completar" type="password" name="pass"></label>
             <div class="buttons_register">
             <button type="submit">Enviar</button>
             <button type="reset">Borrar</button>

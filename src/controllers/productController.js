@@ -6,25 +6,24 @@ let {Product} = require('../database/models');
 
 const controller = {
     showProduct: async (req, res) => {
-        // res.render('index', { products });
-        // try {
-            
-        //     const products = Product.findAll({include:['categoria', 'talle', 'color', 'users']})
-        //     // res.render('index', { products });
-        //     res.json(products);
-        // } catch (error) {
-        //     console.log(error);
-        // }
-
-
+      
+        try {
+            const products = await Product.findAll()
+            res.render('index', { products });
+        } catch (error) {
+            console.log(error);
+        }
 
     },
-    detail: (req, res) => {
-        for (let i = 0; i < products.length; i++) {
-            if (products[i].id == req.params.id)
-                res.render('productDetail', { producto: products[i] })
-
-        }
+    detail: async (req, res) => {
+        try {
+            let id = req.params.id
+            const productoEncontrado = await Product.findByPk(id);
+            res.render('productDetail', {  productoEncontrado });
+           } catch (error) {
+            console.log(error);
+           }
+    
     },
     create: (req, res) => {
         

@@ -8,14 +8,14 @@
         <div><h2>Detalle del producto</h2></div>
         
         <div class="product__description">
-            <img src="/images/<%= producto.image %>" alt="producto1">
-            <p class="nombre_prod"><%=producto.description %></p>
+            <img src="/images/<%= productoEncontrado.image %>" alt="producto1">
+            <p class="nombre_prod"><%=productoEncontrado.description %></p>
         </div>
         <div class="productDetail__buttons">
             <a href="" class="button_personalizado">Comprar ahora</a>
             <a href="" class="button_personalizado">Agregar al carrito</a>
-            <a href="/products/detail/edit/<%= producto.id %>" class="button_personalizado">Editar producto</a>
-            <form action="/products/detail/<%= producto.id %>/delete?_method=DELETE" method="POST" style="display:inline;">
+            <a href="/products/detail/edit/<%= productoEncontrado.id %>" class="button_personalizado">Editar producto</a>
+            <form action="/products/detail/<%= productoEncontrado.id %>/delete?_method=DELETE" method="POST" style="display:inline;">
                 <button type="submit" class="button_personalizado">Eliminar producto</button>
             </form>
         </div>

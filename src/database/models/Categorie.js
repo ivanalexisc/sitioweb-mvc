@@ -3,11 +3,13 @@ module.exports = (sequelize, DataTypes)=> {
     const categoria = sequelize.define('Categoria',{
         genero: DataTypes.STRING
     },{
-        tablename:'categorias',
+        tableName:'categorias',
         timestamps:false
     })
     categoria.associate = (models =>{
-        categoria.hasMany(models.Product);
+        categoria.hasMany(models.Product,{
+            foreignKey:'id_categoria'
+        });
     });
     return categoria;
 }

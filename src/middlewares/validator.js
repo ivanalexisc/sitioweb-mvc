@@ -3,8 +3,7 @@ const fs = require('fs');
 const bcrypt = require('bcryptjs');
 const path = require('path');
 const { log } = require('console');
-const usersFileJson = path.join(__dirname, '../data/users.json');
-const users =  JSON.parse(fs.readFileSync(usersFileJson, 'utf-8'));
+
 module.exports = {
     product: [
       body('name')
@@ -43,32 +42,13 @@ module.exports = {
        
     ],
     login: [
-      body('email')
-      .custom(async function(value, {req}){
-        if(value){
-
-         let userFound = await users.find(user => user.email == req.body.email);
-         if (userFound) {
-          let resultado =  bcrypt.compareSync(req.body.pass,userFound.pass);
-          console.log(req.body.pass)
-          
-          if(resultado){
-            return true
-          } else {
-            throw new Error('El nombre de usuario y la contraseña que ingresaste no coinciden');
-          }
-
-
-         } else {
-          throw new Error('Debes ingresar la contraseña');
-         }
-
-        } else {
-
-          throw new Error('El email es obligatorio');
-        }
-      })
-      
-      
+      body("email")
+            .notEmpty()
+            .isEmail()
+            .withMessage('Email inválido.'),
+        body("password")
+            .notEmpty()
+            .withMessage('Su mail o contraseña no concuerdan.')
+            
     ]
 };
