@@ -17,26 +17,39 @@
         <form action="/products/store" enctype="multipart/form-data" method="POST" class="form__register">
             <h1>Formulario de creacion de productos</h1>
             <label>
-                <h4>Nombre del producto:</h4> <input class="completar" type="text" name="name">
+                <h4>Nombre del producto:</h4> <input class="completar" type="text" name="nombre">
             </label>
             <label>
-                <h4>Precio del producto:</h4><input class="completar" type="text" name="price">
+                <h4>Precio del producto:</h4><input class="completar" type="text" name="precio">
             </label>
-            <label for="discount" class="form-label">
-                <h4>Descuento:</h4>
-                <input type="text" id="discount" name="discount" placeholder="Ej: 15" class="completar">
+            <label for="cantidad" class="form-label">
+                <h4>Cantidad</h4>
+                <input type="text" id="cantidad" name="cantidad" placeholder="Ej: 15" class="completar">
             </label>
-            <label for="discount" class="form-label">imagen</label>
-						<input type="file" name="image" >
             
-            <label for="category" class="form-label"><h4>Categoría:</h4></label>
-            <select name="category" id="category" class="completar">
-                <option value="">Elegí</option>
-                <option value="in-sale">En oferta</option>
-                <option value="visited">Últimos agregados</option>
+            <label for="categoria" class="form-label"><h4>Categoría:</h4></label>
+            <select name="categoria" id="categoria" class="completar">
+
+                <% categorias.forEach(categoria => { %>
+                 <option value="<%= categoria.id %>"><%= categoria.genero %></option>
+                <% }) %>
+                
             </select>
-            <label for="description" class="form-label"><h4>Descripción:</h4></label>
-				<textarea name="description" id="description" class="completar"></textarea>
+            <label for="color" class="form-label"><h4>Color:</h4></label>
+            <select name="color" id="color" class="completar">
+                <% colores.forEach(color => { %>
+                 <option value="<%= color.id %>"><%= color.nombre %></option>
+                <% }) %>
+            </select>
+            <label for="talle" class="form-label"><h4>Talle:</h4></label>
+            <select name="talle" id="talle" class="completar">
+                <% talles.forEach(talle => { %>
+                    <option value="<%= talle.id %>"><%= talle.numero %></option>
+                <% }) %>
+            </select>
+            
+            <label for="image" class="form-label">imagen</label>
+                <input type="file" name="image" >
             </div>
             <div class="buttons_register">
                 <button type="submit">Guardar</button>

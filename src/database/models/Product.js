@@ -2,8 +2,8 @@ const {sequelize, DataTypes} = require('sequelize');
 
 module.exports = (sequelize, DataTypes) => {
     const product = sequelize.define('Product', {  // Cambié 'producto' a 'Product'
-        precio: DataTypes.DECIMAL,
         nombre:DataTypes.STRING,
+        precio: DataTypes.DECIMAL,
         cantidad: DataTypes.INTEGER,
         id_categoria: DataTypes.INTEGER,
         id_color: DataTypes.INTEGER,
@@ -14,8 +14,9 @@ module.exports = (sequelize, DataTypes) => {
         timestamps: false
     });
     product.associate = (models =>{
-        product.belongsTo(models.Categoria,{
-            foreignKey:'id_categoria'
+        product.belongsTo(models.Categorie,{
+            foreignKey:'id_categoria',
+            timestamps: false
         });
         product.belongsToMany(models.User, {
             as: 'users',
@@ -24,6 +25,14 @@ module.exports = (sequelize, DataTypes) => {
             otherKey: "user_id",
             timestamps: false
         });
+        product.belongsTo(models.Talle,{
+            foreignKey:'id_talle',
+            timestamps: false
+        });
+        product.belongsTo(models.Color,{
+            foreignKey:'id_color',
+            timestamps: false
+        })
         
     })
     return product;

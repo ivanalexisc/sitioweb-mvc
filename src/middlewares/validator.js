@@ -1,8 +1,6 @@
 const { body } = require('express-validator');
-const fs = require('fs');
-const bcrypt = require('bcryptjs');
 const path = require('path');
-const { log } = require('console');
+
 
 module.exports = {
     product: [
