@@ -3,20 +3,7 @@ const bcrypt = require('bcryptjs');
 const { validationResult } = require('express-validator');
 const { Op } = require('sequelize')
 const db = require("../database/models")
-// const usersFileJson = path.join(__dirname, '../data/users.json');
-// const users =  JSON.parse(fs.readFileSync(usersFileJson, 'utf-8'));
-/*const leerJson = () => {
-  usersJson = fs.readFileSync(usersFileJson, {encoding: 'utf-8'});
-  return JSON.parse(usersJson);
-} */
-// let guardarUser = (users) => {
-//     fs.writeFileSync(
-//         path.join(__dirname, '../data/users.json'),
-//         JSON.stringify(users, null, " "),
-//         'utf-8'
-//     );
-//     users = JSON.parse(fs.readFileSync(usersFileJson, 'utf-8'));
-// };
+
 
 const controller ={
     showRegister: (req,res) => {
@@ -79,7 +66,7 @@ const controller ={
                         }
                         if (isMatch) {
                             req.session.usuario = usuarioLogueado;
-                            res.cookie("recordame", usuarioLogueado.email, { maxAge: 1000 * 60 });
+                            res.cookie("recordarme", usuarioLogueado.email, { maxAge: 1000 * 60 });
                             return res.redirect('/', );
                         } else {
                             res.render('login', { errors: 'Contraseña incorrecta', old: req.body.email });

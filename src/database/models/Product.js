@@ -1,39 +1,42 @@
-const {sequelize, DataTypes} = require('sequelize');
+const { sequelize, DataTypes } = require('sequelize');
 
 module.exports = (sequelize, DataTypes) => {
-    const product = sequelize.define('Product', {  // Cambié 'producto' a 'Product'
-        nombre:DataTypes.STRING,
-        precio: DataTypes.DECIMAL,
+    const product = sequelize.define('Product', {
+        nombre: DataTypes.STRING,
+        precio: DataTypes.DECIMAL(10, 2),  // Asegúrate de que el tipo coincida con la base de datos
         cantidad: DataTypes.INTEGER,
         id_categoria: DataTypes.INTEGER,
         id_color: DataTypes.INTEGER,
         id_talle: DataTypes.INTEGER,
-        image: DataTypes.STRING
+        image: DataTypes.STRING,
+        status: {
+            type: DataTypes.ENUM('activo', 'descontinuado'),
+            defaultValue: 'activo'
+        }
     }, {
-        tableName:'productos',
-        timestamps: false
+        tableName: 'productos',
+        timestamps: true, // Utiliza `true` para manejar `createdAt` y `updatedAt`
+        createdAt: 'created_at',
+        updatedAt: 'updated_at'
     });
-    product.associate = (models =>{
-        product.belongsTo(models.Categorie,{
-            foreignKey:'id_categoria',
-            timestamps: false
+
+    product.associate = (models) => {
+        product.belongsTo(models.Categorie, {
+            foreignKey: 'id_categoria',
         });
         product.belongsToMany(models.User, {
             as: 'users',
             through: 'producto_user',
-            foreignKey: "producto_id",
-            otherKey: "user_id",
-            timestamps: false
+            foreignKey: 'id_producto',
+            otherKey: 'id_user'
         });
-        product.belongsTo(models.Talle,{
-            foreignKey:'id_talle',
-            timestamps: false
+        product.belongsTo(models.Talle, {
+            foreignKey: 'id_talle',
         });
-        product.belongsTo(models.Color,{
-            foreignKey:'id_color',
-            timestamps: false
-        })
-        
-    })
+        product.belongsTo(models.Color, {
+            foreignKey: 'id_color',
+        });
+    }
+
     return product;
 };

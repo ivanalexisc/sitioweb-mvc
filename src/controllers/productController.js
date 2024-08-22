@@ -1,12 +1,14 @@
-const fs = require("fs");
-const path = require("path");
+
 const { body, validationResult } = require("express-validator");
 let { Product, Categorie , Color, Talle} = require("../database/models");
+const db = require("../database/models");
 
 const controller = {
   showProduct: async (req, res) => {
     try {
-      const products = await Product.findAll();
+      const products = await Product.findAll({
+        include: [Categorie, Color, Talle],
+      });
       res.render("index", { products });
     } catch (error) {
       console.log(error);
@@ -15,7 +17,9 @@ const controller = {
   detail: async (req, res) => {
     try {
       let id = req.params.id;
-      const productoEncontrado = await Product.findByPk(id);
+      const productoEncontrado = await Product.findByPk(id, {
+        include: [Categorie, Color, Talle],
+      });
       res.render("productDetail", { productoEncontrado });
     } catch (error) {
       console.log(error);
@@ -32,30 +36,46 @@ const controller = {
     }
   },
   store: async (req, res) => {
+    if (!req.session.usuario) {
+      res.redirect('/users/login')
+    }
+    console.log(req.body);
     const resultado = validationResult(req);
     if (!resultado.isEmpty()) {
-      res.render("product-create-form", resultado);
+   
+      const categorias = await db.Categorie.findAll();
+      const colores = await db.Color.findAll();
+      const talles = await db.Talle.findAll();
+
+      console.log(resultado.array());
+      res.render("product-create-form", {
+        errors: resultado.array(),
+        categorias: categorias,
+        colores: colores,
+        talles: talles,
+      });
     } else {
       try {
         const { nombre, precio, cantidad, categoria, color, talle } = req.body;
-        const image = req.file ? req.file.filename : null;
         const newProduct = await Product.create({
           nombre: nombre,
-          precio: precio,
-          cantidad: cantidad,
-          id_categoria: categoria,
+          precio: parseFloat(precio),
+          cantidad: parseInt(cantidad),
+          id_categoria: categoria, 
           id_color: color,
           id_talle: talle,
-          image: image,
+          image: req.file ? req.file.filename : "",
         });
         await newProduct.addUser(req.session.usuario.id);
 
         res.redirect("/products");
       } catch (error) {
-        console.log(error);
+        console.error("Error al guardar el producto:", error);
+        res.status(500).send("Ocurrió un error al guardar el producto.");
       }
     }
   },
+
   edit: (req, res) => {
     for (let i = 0; i < products.length; i++) {
       if (products[i].id == req.params.id)

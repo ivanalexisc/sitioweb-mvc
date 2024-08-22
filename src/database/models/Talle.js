@@ -9,7 +9,8 @@ module.exports = (sequelize,Datatypes)=>{
     })
     talle.associate = (models)=>{
         talle.hasMany(models.Product,{
-            foreignKey:'id_talle'
+            foreignKey:'id_talle',
+            as : 'products'
         })
     }
     return talle
