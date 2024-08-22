@@ -1,0 +1,56 @@
+
+.form__createEdit{
+ 
+    
+    margin: auto;
+    display: grid;
+    justify-content: center;
+    
+}
+.form__createEdit .text-form{
+    text-align: center;
+    color: black;
+}
+
+#foto_usuario{
+color:transparent;
+}
+
+.completar{
+    width: 100%;
+}
+
+#date{
+    margin: 0% 0% 3% 0%;
+}
+.buttons_createEdit .buttons{
+    display: flex;
+    justify-content: space-around;
+}
+.buttons_createEdit button{
+    width: 29%;
+    background-color: #8500aa;
+    color: white;
+    border-radius: 2px;
+    margin: 20px 0px 20px 0px;
+    padding: 10px;
+    border: 0px;
+}
+
+/*-------------------FIN MAIN---------------*/
+
+
+
+@media (min-width: 768px){
+    .form__createEdit{
+        
+        width: 50%;
+    }
+    .buttons_createEdit button {
+        width: 48%;
+    }
+}
+@media (min-width: 1024px){
+    
+
+}

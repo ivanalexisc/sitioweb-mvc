@@ -27,6 +27,11 @@ SET time_zone = "+00:00";
 -- Estructura de tabla para la tabla `categorias`
 --
 
+DROP DATABASE IF EXISTS eccomerce_real;
+CREATE DATABASE eccomerce_real;
+USE eccomerce_real;
+
+
 CREATE TABLE `categorias` (
   `id` int(11) NOT NULL,
   `genero` varchar(50) NOT NULL,

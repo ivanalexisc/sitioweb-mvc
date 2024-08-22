@@ -197,7 +197,7 @@
     border: solid 1px var(--gray);
     padding: 0 15px;
   }
-  
+ 
   textarea.form-input {
     min-height: 140px;
     resize: vertical;

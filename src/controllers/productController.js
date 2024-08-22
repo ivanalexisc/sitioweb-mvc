@@ -76,48 +76,36 @@ const controller = {
     }
   },
 
-  edit: (req, res) => {
-    for (let i = 0; i < products.length; i++) {
-      if (products[i].id == req.params.id)
-        if (!req.session.usuario) {
-          res.render("login");
-        } else {
-          res.render("productEdit", { producto: products[i] });
-        }
-    }
+  edit: async (req, res) => {
+    const categorias = await db.Categorie.findAll();
+      const colores = await db.Color.findAll();
+      const talles = await db.Talle.findAll();
+    const productoId = req.params.id;
+    const productoToEdit = await Product.findByPk(productoId,{include : ['Categorie', 'Talle', 'Color']});
+    res.render('productEdit', {
+      productoToEdit,
+      categorias:categorias,
+      talles:talles,
+      colores:colores
+    })
+    console.log(productoToEdit);
   },
-  update: (req, res) => {
-    const resultado = validationResult(req);
-    if (!resultado.isEmpty()) {
-      let productoModificado = {
-        name: req.body.name,
-        price: parseFloat(req.body.price),
-        discount: parseInt(req.body.discount),
-        image: req.file ? req.file.filename : "", // Si se sube una nueva imagen
-        category: req.body.category,
-        description: req.body.description,
-      };
+  update:async (req, res) => {
+   try {
+    const productoId = req.params.id;
+    const categorias = await db.Categorie.findAll();
+       const colores = await db.Color.findAll();
+       const talles = await db.Talle.findAll();
+       const productoChanged = await Product.findByPk(productoId, {include: [
+        'Categorie', 'Talle', 'Color'
+       ]});
+       await productoChanged.removeUser(productoChanged.user);
+       await productoChanged.update(req.body)
+       res.redirect("/")
+   } catch (error) {
+    console.log(error);
+   }
 
-      // Iterar sobre los productos para encontrar el que coincide con el ID
-      products.forEach((product) => {
-        if (product.id == req.params.id) {
-          product.name = productoModificado.name;
-          product.price = productoModificado.price;
-          product.discount = productoModificado.discount;
-          product.image = productoModificado.image; // Actualizar imagen si se sube una nueva
-          product.category = productoModificado.category;
-          product.description = productoModificado.description;
-        }
-      });
-
-      // Guardar los cambios en el archivo JSON
-      guardar(products);
-
-      // Redirigir o renderizar la vista 'index' con los productos actualizados
-      res.redirect("/products");
-    } else {
-      res.redirect("productEdit");
-    }
   },
   delete: (req, res) => {
     // guardo el id del producto a borrar
