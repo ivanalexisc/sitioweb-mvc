@@ -111,7 +111,11 @@ const controller = {
       const productToDelete = await Product.findByPk(productId,{
         include:['Categorie', 'Talle', 'Color']
       });
+
+      productToDelete.status= 'descontinuado';
+      await productToDelete.save();
       await productToDelete.removeUser(productToDelete.user);
+      await productoChanged.addUser(req.session.usuario.id);
       await productToDelete.destroy();
       res.redirect('/');
    } catch (error) {
