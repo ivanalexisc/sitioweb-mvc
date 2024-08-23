@@ -1,6 +1,6 @@
 
 const { body, validationResult } = require("express-validator");
-let { Product, Categorie , Color, Talle} = require("../database/models");
+let { Product, Categorie , Color, Talle, User} = require("../database/models");
 const db = require("../database/models");
 
 const controller = {
@@ -93,13 +93,11 @@ const controller = {
   update:async (req, res) => {
    try {
     const productoId = req.params.id;
-    const categorias = await db.Categorie.findAll();
-       const colores = await db.Color.findAll();
-       const talles = await db.Talle.findAll();
        const productoChanged = await Product.findByPk(productoId, {include: [
         'Categorie', 'Talle', 'Color'
        ]});
        await productoChanged.removeUser(productoChanged.user);
+       await productoChanged.addUser(req.session.usuario.id);
        await productoChanged.update(req.body)
        res.redirect("/")
    } catch (error) {
@@ -107,16 +105,18 @@ const controller = {
    }
 
   },
-  delete: (req, res) => {
-    // guardo el id del producto a borrar
-    const productDeleted = req.params.id;
-    // borro el producto del json
-    const productsFinal = products.filter(
-      (product) => product.id != productDeleted
-    );
-    // modifico el json sin el producto eliminado
-    guardar(productsFinal);
-    res.redirect("/products");
+  delete: async (req, res) => {
+   try {
+      const productId = req.params.id;
+      const productToDelete = await Product.findByPk(productId,{
+        include:['Categorie', 'Talle', 'Color']
+      });
+      await productToDelete.removeUser(productToDelete.user);
+      await productToDelete.destroy();
+      res.redirect('/');
+   } catch (error) {
+    
+   }
   },
 };
 

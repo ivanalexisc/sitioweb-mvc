@@ -5,7 +5,10 @@ module.exports = (sequelize, DataTypes) => {
         nombre: DataTypes.STRING 
     } , {
         tableName: 'colores',
-        timestamps: false
+        timestamps: true, // Utiliza `true` para manejar `createdAt` y `updatedAt`
+        createdAt: 'created_at',
+        updatedAt: 'updated_at',
+        deletedAt: 'deleted_at'
     });
     color.associate = (models) => {
         color.hasMany(models.Product, {

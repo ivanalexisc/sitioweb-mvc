@@ -36,17 +36,18 @@ CREATE TABLE `categorias` (
   `id` int(11) NOT NULL,
   `genero` varchar(50) NOT NULL,
   `created_at` timestamp NOT NULL DEFAULT current_timestamp(),
-  `updated_at` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
+  `updated_at` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
+  `deleted_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Volcado de datos para la tabla `categorias`
 --
 
-INSERT INTO `categorias` (`id`, `genero`, `created_at`, `updated_at`) VALUES
-(1, 'Unisex', '2024-08-12 22:50:52', '2024-08-12 22:50:52'),
-(2, 'Hombre', '2024-08-12 22:50:52', '2024-08-12 22:50:52'),
-(3, 'Mujer', '2024-08-12 22:50:52', '2024-08-12 22:50:52');
+INSERT INTO `categorias` (`id`, `genero`, `created_at`, `updated_at`, `deleted_at`) VALUES
+(1, 'Unisex', '2024-08-12 22:50:52', '2024-08-12 22:50:52', NULL),
+(2, 'Hombre', '2024-08-12 22:50:52', '2024-08-12 22:50:52', NULL),
+(3, 'Mujer', '2024-08-12 22:50:52', '2024-08-12 22:50:52', NULL);
 
 -- --------------------------------------------------------
 
@@ -58,17 +59,18 @@ CREATE TABLE `colores` (
   `id` int(11) NOT NULL,
   `nombre` varchar(50) NOT NULL,
   `created_at` timestamp NOT NULL DEFAULT current_timestamp(),
-  `updated_at` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
+  `updated_at` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
+  `deleted_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Volcado de datos para la tabla `colores`
 --
 
-INSERT INTO `colores` (`id`, `nombre`, `created_at`, `updated_at`) VALUES
-(1, 'Negro', '2024-08-12 22:51:51', '2024-08-12 22:51:51'),
-(2, 'Blanco', '2024-08-12 22:51:51', '2024-08-12 22:51:51'),
-(3, 'Rojo', '2024-08-12 22:51:51', '2024-08-12 22:51:51');
+INSERT INTO `colores` (`id`, `nombre`, `created_at`, `updated_at`, `deleted_at`) VALUES
+(1, 'Negro', '2024-08-12 22:51:51', '2024-08-12 22:51:51', NULL),
+(2, 'Blanco', '2024-08-12 22:51:51', '2024-08-12 22:51:51', NULL),
+(3, 'Rojo', '2024-08-12 22:51:51', '2024-08-12 22:51:51', NULL);
 
 -- --------------------------------------------------------
 
@@ -87,16 +89,17 @@ CREATE TABLE `productos` (
   `image` varchar(255) DEFAULT NULL,
   `status` enum('activo','descontinuado') DEFAULT 'activo',
   `created_at` timestamp NOT NULL DEFAULT current_timestamp(),
-  `updated_at` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
+  `updated_at` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
+  `deleted_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Volcado de datos para la tabla `productos`
 --
 
-INSERT INTO `productos` (`id`, `nombre`, `precio`, `cantidad`, `id_categoria`, `id_color`, `id_talle`, `image`, `status`, `created_at`, `updated_at`) VALUES
-(1, 'buzo nike gris', 2000.00, 10, 1, 2, 2, 'oferta1.jpg', 'activo', '2024-08-12 22:59:10', '2024-08-20 02:46:46'),
-(2, 'remera azul', 2500.00, 20, 2, 1, 1, 'oferta2.jpg', 'activo', '2024-08-12 22:59:10', '2024-08-20 02:46:46');
+INSERT INTO `productos` (`id`, `nombre`, `precio`, `cantidad`, `id_categoria`, `id_color`, `id_talle`, `image`, `status`, `created_at`, `updated_at`, `deleted_at`) VALUES
+(1, 'buzo nike gris modificado 2', 3500.00, 10, 1, 2, 2, 'oferta1.jpg', 'activo', '2024-08-12 22:59:10', '2024-08-22 21:43:51', NULL),
+(2, 'remera azul modificada', 2500.00, 9, 2, 1, 1, 'oferta2.jpg', 'activo', '2024-08-12 22:59:10', '2024-08-22 21:21:51', NULL);
 
 -- --------------------------------------------------------
 
@@ -109,15 +112,16 @@ CREATE TABLE `producto_user` (
   `id_user` int(11) DEFAULT NULL,
   `id_producto` int(11) DEFAULT NULL,
   `created_at` timestamp NOT NULL DEFAULT current_timestamp(),
-  `updated_at` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
+  `updated_at` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
+  `deleted_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Volcado de datos para la tabla `producto_user`
 --
 
-INSERT INTO `producto_user` (`id`, `id_user`, `id_producto`, `created_at`, `updated_at`) VALUES
-(1, 1, 1, '2024-08-12 23:04:17', '2024-08-12 23:04:17');
+INSERT INTO `producto_user` (`id`, `id_user`, `id_producto`, `created_at`, `updated_at`, `deleted_at`) VALUES
+(1, 1, 1, '2024-08-12 23:04:17', '2024-08-12 23:04:17', NULL);
 
 -- --------------------------------------------------------
 
@@ -129,17 +133,18 @@ CREATE TABLE `talles` (
   `id` int(11) NOT NULL,
   `numero` varchar(10) NOT NULL,
   `created_at` timestamp NOT NULL DEFAULT current_timestamp(),
-  `updated_at` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
+  `updated_at` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
+  `deleted_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Volcado de datos para la tabla `talles`
 --
 
-INSERT INTO `talles` (`id`, `numero`, `created_at`, `updated_at`) VALUES
-(1, '1', '2024-08-12 22:54:53', '2024-08-12 22:54:53'),
-(2, '2', '2024-08-12 22:54:53', '2024-08-12 22:54:53'),
-(3, '3', '2024-08-12 22:54:53', '2024-08-12 22:54:53');
+INSERT INTO `talles` (`id`, `numero`, `created_at`, `updated_at`, `deleted_at`) VALUES
+(1, '1', '2024-08-12 22:54:53', '2024-08-12 22:54:53', NULL),
+(2, '2', '2024-08-12 22:54:53', '2024-08-12 22:54:53', NULL),
+(3, '3', '2024-08-12 22:54:53', '2024-08-12 22:54:53', NULL);
 
 -- --------------------------------------------------------
 
@@ -155,16 +160,17 @@ CREATE TABLE `usuarios` (
   `email` varchar(100) NOT NULL,
   `pw_hash` varchar(255) NOT NULL,
   `created_at` timestamp NOT NULL DEFAULT current_timestamp(),
-  `updated_at` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
+  `updated_at` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
+  `deleted_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Volcado de datos para la tabla `usuarios`
 --
 
-INSERT INTO `usuarios` (`id`, `nombre`, `apellido`, `direccion`, `email`, `pw_hash`, `created_at`, `updated_at`) VALUES
-(1, 'ivan', 'chanenko', 'Espejo 3085', 'ivanalexischanenko@gmail.com', '$2a$10$BLpJzkC/ho2veAlKbTsVB.slJtTXWzKq9VfA992TphZ86qZWav5hm', '2024-08-12 23:03:38', '2024-08-20 03:55:54'),
-(2, 'victor', 'chanenko', 'salta 298', 'vchanenko@gmail.com', '$2a$10$J9nlRa0nSX1iwbNI4aauK.CiCkXQ1P5lvyQCUcgpLqgLHaHgyP.km', '2024-08-20 04:22:17', '2024-08-20 04:22:17');
+INSERT INTO `usuarios` (`id`, `nombre`, `apellido`, `direccion`, `email`, `pw_hash`, `created_at`, `updated_at`, `deleted_at`) VALUES
+(1, 'ivan', 'chanenko', 'Espejo 3085', 'ivanalexischanenko@gmail.com', '$2a$10$BLpJzkC/ho2veAlKbTsVB.slJtTXWzKq9VfA992TphZ86qZWav5hm', '2024-08-12 23:03:38', '2024-08-20 03:55:54', NULL),
+(2, 'victor', 'chanenko', 'salta 298', 'vchanenko@gmail.com', '$2a$10$J9nlRa0nSX1iwbNI4aauK.CiCkXQ1P5lvyQCUcgpLqgLHaHgyP.km', '2024-08-20 04:22:17', '2024-08-20 04:22:17', NULL);
 
 --
 -- Índices para tablas volcadas

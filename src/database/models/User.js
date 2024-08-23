@@ -8,11 +8,15 @@ module.exports = (sequelize, DataTypes)=> {
         pw_hash: DataTypes.STRING
     },{
         tableName:'usuarios',
-        timestamps:false
+        timestamps: true, // Utiliza `true` para manejar `createdAt` y `updatedAt`
+        createdAt: 'created_at',
+        updatedAt: 'updated_at',
+        deletedAt: 'deleted_at'
     })
     user.associate = (models =>{
         user.belongsToMany(models.Product,{
             foreignKey:'id_user',
+            otherKey:'id_producto',
             through:'producto_user',
             as:'products'
         });

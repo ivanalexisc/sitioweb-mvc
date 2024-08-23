@@ -43,7 +43,7 @@ router.get('/create', productController.create);
 /*Form to edit a product*/
 router.get('/detail/edit/:id', productController.edit);
 
-router.post('/detail/:id/update', upload.single("image"),validator.product, productController.update);
+router.put('/detail/:id/update', upload.single("image"),validator.product, productController.update);
 
 
 router.post('/store',upload.single('image'), validator.product, productController.store);

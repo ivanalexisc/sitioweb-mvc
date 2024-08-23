@@ -17,7 +17,8 @@ module.exports = (sequelize, DataTypes) => {
         tableName: 'productos',
         timestamps: true, // Utiliza `true` para manejar `createdAt` y `updatedAt`
         createdAt: 'created_at',
-        updatedAt: 'updated_at'
+        updatedAt: 'updated_at',
+        deletedAt:'deleted_at'
     });
 
     product.associate = (models) => {

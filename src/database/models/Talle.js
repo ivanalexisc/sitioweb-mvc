@@ -5,7 +5,10 @@ module.exports = (sequelize,Datatypes)=>{
         numero:Datatypes.INTEGER
     },{
         tableName:'talles',
-        timestamps:false
+        timestamps: true, // Utiliza `true` para manejar `createdAt` y `updatedAt`
+        createdAt: 'created_at',
+        updatedAt: 'updated_at',
+        deletedAt: 'deleted_at'
     })
     talle.associate = (models)=>{
         talle.hasMany(models.Product,{
