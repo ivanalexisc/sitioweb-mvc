@@ -15,7 +15,7 @@
                 <% }) %>
                 <% } %>
         
-                <form action="/products/detail/<%= productoToEdit.id %>/update" enctype="multipart/form-data" method="POST" class="form__createEdit">
+                <form action="/products/detail/<%= productoToEdit.id %>/update?_method=PUT" enctype="multipart/form-data" method="POST" class="form__createEdit">
                     <h1 class="text-form">Formulario de edicion del producto</h1>
                     <h2 class="text-form"> <%= productoToEdit.nombre  %> </h2>
                     <label for="nombre del producto" class="form-label">
