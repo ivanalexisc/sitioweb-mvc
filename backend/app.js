@@ -5,11 +5,12 @@ const cookieParser = require('cookie-parser');
 const logger = require('morgan');
 const methodOverride = require('method-override');
 const log = require('./src/middlewares/log');
+const cors = require('cors');
 const session = require('express-session');
 const app = express();
 
 
-
+const apiRouter = require('./src/routes/api/apiRoutes');
 const indexRouter = require('./src/routes/index');
 const usersRouter = require('./src/routes/users');
 const productsRouter = require('./src/routes/product');
@@ -26,6 +27,9 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(methodOverride('_method'));
+app.use(cors({
+  origin:'http://localhost:5173'
+}));
 app.use(session({
 secret:'Esta es la pagina de ivo :D ',
 resave: true,
@@ -38,6 +42,7 @@ app.use(log);
 
 
 app.use('/', indexRouter);
+app.use('/api', apiRouter)
 app.use('/users', usersRouter);
 app.use('/products', productsRouter);
 
