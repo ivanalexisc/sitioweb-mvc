@@ -1,5 +1,5 @@
 import product_avatar from '../../assets/images/dummy-avatar.jpg';
-import CardBackRow from './cards/CardBackRow';
+import CategoriesContent from '../../components/indexDashboard/CategoriesContent';
 const BackRow = () => {
     return(
         <div className="row">
@@ -32,13 +32,7 @@ const BackRow = () => {
             </div>
             <div className="card-body">
                 <div className="row">
-                    <CardBackRow category="Category 01" />
-                    <CardBackRow category="Category 02" />
-                    <CardBackRow category="Category 03"/>
-                    <CardBackRow category="Category 04" />
-                    <CardBackRow category="Category 05" />
-                    <CardBackRow category="Category 06"/>
-                    
+                   <CategoriesContent/>
                 </div>
             </div>
         </div>
