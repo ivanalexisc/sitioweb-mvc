@@ -4,6 +4,7 @@ const apiController = require('../../controllers/api/apiController');
 
 /* GET home page. */
 router.get('/products', apiController.index);
+router.get('/categories',apiController.getCategories)
 
 
 

@@ -29,6 +29,30 @@ const controller = {
       console.log(error);
     }
   },
+  getCategories: async (req,res)=>{
+    try {
+      const categories = await Categorie.findAll();
+      if (categories.length>0) {
+        let respuesta = {
+          metadata:{
+            status:200,
+            cantidad:categories.length,
+          },
+            resultados:categories,
+        }
+          res.json(respuesta);
+      }else {
+        respuesta = {
+          metadata:{
+            status:204,
+            length:categories.length
+        }
+      }
+    } }
+    catch (error) {
+      console.log(error);
+    }
+  }
 };
 
 module.exports = controller;
