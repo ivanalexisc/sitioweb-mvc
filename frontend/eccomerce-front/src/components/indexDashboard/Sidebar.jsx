@@ -1,7 +1,7 @@
-import React from 'react';
 
 function Sidebar() {
   return (
+    <nav className="navbar align-items-start sidebar sidebar-dark accordion bg-gradient-primary p-0 navbar-dark">
     <ul className="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
       
       <a className="sidebar-brand d-flex align-items-center justify-content-center" href="/">
@@ -25,9 +25,9 @@ function Sidebar() {
       <div className="sidebar-heading">Actions</div>
       
       <li className="nav-item">
-        <a className="nav-link collapsed" href="/pages ">
+        <a className="nav-link collapsed" href="/usuarios ">
           <i className="fas fa-fw fa-folder"></i>
-          <span>Pages</span>
+          <span>Usuarios</span>
         </a>
       </li>
       
@@ -47,6 +47,7 @@ function Sidebar() {
       
       <hr className="sidebar-divider d-none d-md-block" />
     </ul>
+    </nav>
   );
 }
 

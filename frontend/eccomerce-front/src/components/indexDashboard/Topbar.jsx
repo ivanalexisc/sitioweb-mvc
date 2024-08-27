@@ -7,6 +7,19 @@ function Topbar() {
             <button id="sidebarToggleTop" className="btn btn-link d-md-none rounded-circle mr-3">
                 <i className="fa fa-bars"></i>
             </button>
+            <form className="d-none d-sm-inline-block me-auto ms-md-3 my-2 my-md-0 mw-100 navbar-search">
+  <div className="input-group">
+    <input
+      className="bg-light form-control border-0 small"
+      type="text"
+      placeholder="Search for ..."
+    />
+    <button className="btn btn-primary py-0" type="button">
+      <i className="fas fa-search" />
+    </button>
+  </div>
+</form>
+
 
             <ul className="navbar-nav ml-auto">
 
