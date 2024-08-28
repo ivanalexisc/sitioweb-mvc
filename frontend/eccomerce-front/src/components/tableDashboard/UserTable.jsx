@@ -1,5 +1,12 @@
 import Footer from "../indexDashboard/Footer";
+import { useFetch } from '../../useFetch';
 const UserTable = ()=>{
+  const { data, error, loading } = useFetch('http://localhost:3000/api/users');
+    
+  if (loading) return <p>Loading...</p>;
+  if (error) return <p>Error: {error}</p>;
+
+
     return(
       
    <div  className="d-flex flex-column" id="wrapper">
@@ -37,12 +44,17 @@ const UserTable = ()=>{
             </tr>
           </thead>
           <tbody>
-            <tr>
-              <td>hola</td>
-              <td>Accountant</td>
-              <td>Tokyo</td>
-              <td>33</td>
+          {error && <p>Error: {error}</p>}
+          {loading && <p>Loading...</p>}
+          {data.resultados.map ((user) => (
+            <tr key={user.id}>
+              <td>{user.nombre}</td>
+              <td>{user.apellido}</td>
+              <td>{user.direccion}</td>
+              <td>{user.email}</td>
             </tr>
+          ))}
+            
             
           </tbody>
           
