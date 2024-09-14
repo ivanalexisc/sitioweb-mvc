@@ -5,6 +5,7 @@ const userApiController = require('../../controllers/api/userApiController');
 
 /* GET home page. */
 router.get('/products', apiController.index);
+router.get('/products/last', apiController.getLastProduct);
 router.get('/categories',apiController.getCategories)
 router.get('/users', userApiController.getUsers);
 

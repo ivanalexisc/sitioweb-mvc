@@ -52,6 +52,24 @@ const controller = {
     catch (error) {
       console.log(error);
     }
+  },
+  getLastProduct: async(req,res)=>{
+    try {
+      const lastProduct = await Product.findOne({
+        include: [Categorie,Color,Talle],
+        order:[['created_at', 'DESC']]
+      });
+
+      if(lastProduct){
+        res.json({resultado:lastProduct});
+      }else {
+        res.status(204).json({message:'No products found'});
+      }
+
+    } catch (error) {
+      console.log(error);
+      res.status(500).json({error:'Error fetching the last product'});
+    }
   }
 };
 
