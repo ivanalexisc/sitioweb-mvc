@@ -64,7 +64,7 @@ const controller = {
           id_categoria: categoria, 
           id_color: color,
           id_talle: talle,
-          image: req.file ? req.file.filename : "",
+          image: req.file.path,
         });
         await newProduct.addUser(req.session.usuario.id);
 

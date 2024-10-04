@@ -1,7 +1,8 @@
 import { StrictMode } from 'react'
 import { createRoot } from 'react-dom/client'
 import App from './App.jsx'
-import Table from './components/tableDashboard/Table.jsx'
+import UsersTable from './components/tableDashboard/Table.jsx'
+import ProductsTable from './components/productsDashboard/Table.jsx'
 
 import {
   createBrowserRouter,
@@ -15,7 +16,11 @@ const router = createBrowserRouter([
   },
   {
     path:'/usuarios',
-    element: <Table/>
+    element: <UsersTable/>
+  },
+  {
+    path: '/productos',
+    element: <ProductsTable/>
   }
 ]);
 

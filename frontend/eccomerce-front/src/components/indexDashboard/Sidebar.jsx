@@ -32,9 +32,9 @@ function Sidebar() {
       </li>
       
       <li className="nav-item">
-        <a className="nav-link" href="/">
+        <a className="nav-link" href="/productos">
           <i className="fas fa-fw fa-chart-area"></i>
-          <span>Charts</span>
+          <span>Productos</span>
         </a>
       </li>
       
