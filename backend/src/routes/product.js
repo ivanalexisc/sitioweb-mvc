@@ -16,7 +16,7 @@ cloudinary.config({
   params:{
     folder:'uploads',
     allowed_formats:['jpg', 'png'],
-  };
+  }
 });
 
 
