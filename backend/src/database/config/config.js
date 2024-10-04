@@ -17,11 +17,11 @@ module.exports = {
     "host": "127.0.0.1",
     "dialect": "mysql"
   },
-  "production": {
-    "username": "u1rt0ksifkom7c6i",
-    "password": "O4SnT5AQymnHhtoUaOVj",
-    "database": "bfpzly0idhi4wsmy9vwy",
-    "host": "bfpzly0idhi4wsmy9vwy-mysql.services.clever-cloud.com",
-    "dialect": "mysql"
+  production: {
+    username: process.env.DB_USERNAME_PROD,
+    password: process.env.DB_PASSWORD_PROD,
+    database: process.env.DB_NAME_PROD,
+    host: process.env.DB_HOST_PROD,
+    dialect: process.env.DB_DIALECT_PROD
   }
 }
