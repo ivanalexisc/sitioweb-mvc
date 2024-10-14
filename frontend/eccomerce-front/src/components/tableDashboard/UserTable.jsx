@@ -46,8 +46,8 @@ const UserTable = ()=>{
           <tbody>
           {error && <p>Error: {error}</p>}
           {loading && <p>Loading...</p>}
-          {data.resultados.map ((user) => (
-            <tr key={user.id}>
+          {data.resultados.map ((user, index) => (
+            <tr key={user.id || index}>
               <td>{user.nombre}</td>
               <td>{user.apellido}</td>
               <td>{user.direccion}</td>
