@@ -1,7 +1,7 @@
 module.exports = {
   "development": {
     "username": "root",
-    "password": null,
+    "password": "root",
     "database": "eccomerce_real",
     "host": "127.0.0.1",
     "dialect": "mysql",
@@ -22,7 +22,6 @@ module.exports = {
     password: process.env.DB_PASSWORD_PROD,
     database: process.env.DB_NAME_PROD,
     host: process.env.DB_HOST_PROD,
-<<<<<<< HEAD
     dialect: process.env.DB_DIALECT_PROD || 'mysql',
     port: 3306, // Si tu base de datos utiliza otro puerto, cámbialo aquí.
     dialectOptions: {
@@ -30,8 +29,5 @@ module.exports = {
         rejectUnauthorized: false
       }
     }
-=======
-    dialect: "mysql"
->>>>>>> origin/master
   }
 }
