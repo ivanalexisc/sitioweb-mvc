@@ -3,9 +3,24 @@ const router = express.Router();
 const path = require('path');
 const multer = require('multer');
 const validator = require('../middlewares/validator');
+const cloudinary = require('cloudinary').v2;
+const {CloudinaryStorage} = require('multer-storage-cloudinary');
 
 //Controller require
 const productController = require('../controllers/productController');
+
+
+//Cloudinary Config
+cloudinary.config({
+  cloudinary:cloudinary,
+  params:{
+    folder:'uploads',
+    allowed_formats:['jpg', 'png'],
+  }
+});
+
+
+
 
 //SET STORAGE
 var storage = multer.diskStorage({
