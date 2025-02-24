@@ -15,7 +15,7 @@
         </div>
         <div class="productDetail__buttons">
             <a href="" class="button_personalizado">Comprar ahora</a>
-            <a href="" class="button_personalizado">Agregar al carrito</a>
+            <button onclick="addToCart(<%= productoEncontrado.id %>)">🛒 Agregar al carrito</button>
             <a href="/products/detail/edit/<%= productoEncontrado.id %>" class="button_personalizado">Editar producto</a>
             <form action="/products/detail/<%= productoEncontrado.id %>/delete?_method=DELETE" method="POST" style="display:inline;">
                 <button type="submit" class="button_personalizado">Eliminar producto</button>

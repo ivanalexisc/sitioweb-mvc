@@ -14,6 +14,7 @@ const apiRouter = require('./src/routes/api/apiRoutes');
 const indexRouter = require('./src/routes/index');
 const usersRouter = require('./src/routes/users');
 const productsRouter = require('./src/routes/product');
+const cartRoutes = require('./src/routes/cartRoutes');
 
 
 
@@ -33,11 +34,19 @@ app.use(cors({
 app.use(session({
 secret:'Esta es la pagina de ivo :D ',
 resave: true,
-saveUninitialized: true
+saveUninitialized: true,
+cookie: { secure: false }
 }));
 
 // mis middlewares
 app.use(log);
+app.use((req, res, next) => {
+  if (!req.session.cart) {
+    req.session.cart = []; // 🔹 Inicializa el carrito si no existe
+    console.log("✅ Carrito inicializado:", req.session.cart);
+  }
+  next();
+});
 
 
 
@@ -45,6 +54,7 @@ app.use('/', indexRouter);
 app.use('/api', apiRouter)
 app.use('/users', usersRouter);
 app.use('/products', productsRouter);
+app.use('/cart', cartRoutes);
 
 
 // catch 404 and forward to error handler
