@@ -21,7 +21,7 @@
                         <p class="off">Talle:<%= producto.id_talle %></p>
                         <p class="off">Color:<%= producto.id_color %></p>
                     </div>
-                   <a  href=""><img class="button_personalizado" src="/images/carrito.png" alt="carrito"></a>
+                    <button onclick="addToCart(<%= producto.id %>)">🛒 Agregar al carrito</button>
                 </div>
             </article>
             <% }) %>

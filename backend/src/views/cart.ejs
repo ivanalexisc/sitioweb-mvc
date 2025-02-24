@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+  <%- include('partials/head', {tittle: 'Index'}); %>
+<body>
+  <%- include('partials/header'); %>
+    <h2>🛒 Tu Carrito</h2>
+
+<table>
+  <thead>
+    <tr>
+      <th>Producto</th>
+      <th>Precio</th>
+      <th>Cantidad</th>
+      <th>Subtotal</th>
+      <th>Acciones</th>
+    </tr>
+  </thead>
+  <tbody id="cart-items">
+    <% if (cart.length > 0) { %>
+      <% cart.forEach(item => { %>
+        <tr>
+          <td><%= item.name %></td>
+          <td>$<%= item.price %></td>
+          <td><%= item.quantity %></td>
+          <td>$<%= item.price * item.quantity %></td>
+          <td>
+            <button onclick="removeFromCart('<%= item.id %>')">🗑 Eliminar</button>
+          </td>
+        </tr>
+      <% }) %>
+    <% } else { %>
+      <tr>
+        <td colspan="5">Carrito vacío</td>
+      </tr>
+    <% } %>
+  </tbody>
+</table>
+
+<button onclick="clearCart()">🧹 Vaciar Carrito</button>
+</body>
+</html>
