@@ -6,9 +6,8 @@ import './Productstable.css'
 const ProductsTable = () => {
   const { data, error, loading } = useFetch('http://localhost:3000/api/products');
   const [editingProduct, setEditingProduct] = useState(null); // Estado para el producto a editar
-  const [newProduct, setNewProduct] = useState({ nombre: '', precio: '', cantidad: '', id_categoria:'', id_color:''}); // Estado para el nuevo producto
+  const [newProduct, setNewProduct] = useState({ nombre: '', precio: '', cantidad: '', id_categoria:'', id_color:'', id_talle:''}); // Estado para el nuevo producto
   const [isAddModalOpen, setIsAddModalOpen] = useState(false); // Estado para abrir/cerrar el modal de agregar producto
-
   const handleDeleteProduct = (productId) => {
     console.log("Producto eliminado con ID:", productId);
   };
@@ -22,14 +21,32 @@ const ProductsTable = () => {
     console.log("Producto guardado:", editingProduct);
     setEditingProduct(null); // Limpiamos el estado después de guardar
   };
+ 
+  const handleAddProduct = async () => {
+    try {
+      const response = await fetch("http://localhost:3000/api/products", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(newProduct),
+      });
 
-  const handleAddProduct = () => {
-    console.log("Producto agregado:", newProduct);
-    // Aquí puedes hacer la lógica para enviar el nuevo producto al backend
-    setIsAddModalOpen(false); // Cierra el modal después de agregar el producto
-    setNewProduct({ nombre: '', precio: '', cantidad: '' }); // Limpia el formulario
+      if (!response.ok) {
+        const errorData = await response.json();
+        console.error("Error al agregar el producto:", errorData.error);
+        return;
+      }
+
+      const addedProduct = await response.json();
+      console.log("Producto agregado con éxito:", addedProduct);
+
+      // Cerrar modal y limpiar formulario
+      setIsAddModalOpen(false); // Cierra el modal después de agregar el producto
+      setNewProduct({ nombre: "", precio: "", cantidad: "", id_categoria: "", id_color: "", id_talle: "" });
+    } catch (error) {
+      console.error("Error al agregar el producto:", error);
+    }
   };
-
+  
   if (loading) return <p>Loading...</p>;
   if (error) return <p>Error: {error}</p>;
 
@@ -98,8 +115,8 @@ const ProductsTable = () => {
 
       {/* Modal para editar un producto */}
       {editingProduct && (
-        <div className="modal">
-          <div className="modal-content">
+        <div className="custom-modal">
+          <div className="custom-modal-content">
             <h4>Editando Producto</h4>
             <label>
               Nombre:
@@ -146,8 +163,8 @@ const ProductsTable = () => {
 
       {/* Modal para agregar un nuevo producto */}
       {isAddModalOpen && (
-        <div className="modal">
-          <div className="modal-content">
+        <div className="custom-modal">
+          <div className="custom-modal-content">
             <h4>Agregar Producto</h4>
             <label>
               Nombre:
