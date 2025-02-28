@@ -21,7 +21,10 @@
                         <p class="off">Talle:<%= producto.id_talle %></p>
                         <p class="off">Color:<%= producto.id_color %></p>
                     </div>
-                    <button onclick="addToCart(<%= producto.id %>)">🛒 Agregar al carrito</button>
+                    <% if (usuario) { %>
+                        <button onclick="addToCart(<%= producto.id %>)">🛒 Agregar al carrito</button>
+                      <% } %>
+                    
                 </div>
             </article>
             <% }) %>

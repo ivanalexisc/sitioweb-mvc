@@ -3,22 +3,23 @@
     <div class="logo" >
      <a href="/products"><img src="/images/ameri_tortuga.png" alt="Logo-Ameri" ></a>
     </div>
-      <form class="d-flex" role="search">
-        <input type="search" placeholder="Buscar..." id="Buscador" />  
-      </form> 
+      
       <nav class="navbar ">
                 <ul class="navbar-nav">
                   <li><a class="nav-link" href="" target="_blank" >HOMBRE</a></li >
                   <li><a class="nav-link" href="" target="_blank" rel="noopener noreferrer">MUJER</a></li >
                    <% if (usuario) { %>
-                  <a class="nav-link" href="/products/create">CREAR</a>
-                  <a class="nav-link"  href="/users/logout">LOGOUT</a>
-                  <a href="" class="nav-link"> <%= usuario.nombre %> <%= usuario.apellido %> </a>
+                    <li><a class="nav-link" href="/products/create">CREAR</a></li>
+                      <li><a class="nav-link"  href="/users/logout">LOGOUT</a></li>
+                        <li><a href="" class="nav-link"> <%= usuario.nombre %> <%= usuario.apellido %> </a></li>
                   <%  } else { %>
-                      <a  class="nav-link" href="/users/login">LOGIN</a>
-                      <a class="nav-link" href="/users/register">REGISTRO</a>
+                     <li> <a  class="nav-link" href="/users/login">LOGIN</a></li>
+                     <li><a class="nav-link" href="/users/register">REGISTRO</a></li>
                       <% } %> 
-                  <a href="/cart"><span class="material-symbols-outlined">shopping_cart</span></a>
+                      <% if (usuario) { %>
+                        <li><a href="/cart"><span class="material-symbols-outlined">shopping_cart</span></a></li>
+                      <% } %>
+                      
                 </ul>
             </div>
           

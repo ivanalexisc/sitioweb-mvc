@@ -1,46 +1,52 @@
 
 /*-------------HEADER----------------*/
 
-.header__container{
-    background-color: #45592d;
+.header__container {
+    background-color: #445D48;
     width: 100%;
     height: 7rem;
     display: flex;
     align-items: center;
     justify-content: space-between;
-    flex-wrap: wrap;
-    }
-.logo{
-    width: 100px;
-    margin-top: 8px;
+    padding: 0 20px;
 }
-.logo img{
-    width: 100%;
-    margin-left: 40px;
-}
-.navbar{
-    display: flex;
-    text-decoration: none;
-}
-.navbar-nav{
-    display: flex;
-    text-decoration: none;
-    padding: 10px;
+.logo {
+    width: 80px;
+    margin: 0;
 }
 
-.nav-link{
+.logo img {
+    width: 100%;
+    margin-left: 0;
+}
+
+/* Ajuste de la barra de navegación */
+.navbar {
+    display: flex;
+    align-items: center;
+}
+
+/* Ajuste de los enlaces */
+.navbar-nav {
+    display: flex;
+    list-style: none;
+    padding: 10px;
+    gap: 10px;
+}
+
+.nav-link {
     text-decoration: none;
-    color: #f4ede4;
-    display: block;
-    margin: 0 2px;
+    color: #F5EFE6;
     font-weight: 600;
-    padding: 8px 18px;
+    padding: 8px 14px;
     transition: 0.2s;
     border-radius: 30px;
+    white-space: nowrap; /* Evita que las palabras se rompan */
 }
-.nav-link:hover{
-    background-color: #f4ede4;
-    color: #45592d;
+
+.nav-link:hover {
+    background-color: #F5EFE6;
+    color: #445D48;
 }
 
 .d-flex{
@@ -50,7 +56,7 @@
 }
 
 .material-symbols-outlined {
-    color: #f4ede4;
+    color: #F5EFE6;
   font-variation-settings:
   'FILL' 0,
   'wght' 400,
@@ -80,7 +86,7 @@
     font-family: "Poppins", sans-serif;
     font-weight: 700;
     font-style:italic;
-    color: #45592d;
+    color: #445D48;
     text-align: center;
     padding: 10px;
     gap:10px;
@@ -94,14 +100,14 @@
       
      }
 .oferta{
-    background-color: #f4ede4;
+    background-color: #F5EFE6;
     padding: 10px;
     box-sizing: border-box;
     border-radius: 6px;
     overflow: hidden;
     box-shadow: 0px 1px 10px rgb(0,0,0,0.4);
     transition: all 300ms ease ;
-    border: #45592d solid;
+    border: #8B9A46 solid;
     }
     
 .oferta:hover{
@@ -110,11 +116,11 @@
 }
 .oferta figure img {
     width: 100%;
-    height:350px ;
+    height:auto ;
     object-fit: cover;
     transition: all .5s;
     border-radius: 7px;
-    border: #45592d solid;
+    border: #8B9A46 solid;
       
 }.oferta figure img:hover{
     transform: scale(1.02);
@@ -145,7 +151,7 @@
     
 }
 .product__description {
-    background-color: #f4ede4;
+    background-color: #F5EFE6;
     width: 80vw;
     border-radius: 3% 3% 3% 3%;
     color: white;
@@ -210,7 +216,7 @@
 
 /*-------------------FOOTER---------------*/
 footer{
-    background-image: url(../images/footer.png);
+    background-color: #445D48;
     height: 30vh;
     background-repeat: no-repeat;
     background-size: cover;
@@ -257,46 +263,40 @@ footer{
     margin: 1%;
 }
 /*--------------FIN FOOTER-----------*/
+@media (max-width: 500px) {
+    .header__container {
+        flex-direction: column;
+        height: auto;
+        align-items: center;
+        text-align: center;
+    }
+
+    .navbar {
+        flex-direction: column;
+        width: 100%;
+    }
+
+    .navbar-nav {
+        flex-direction: column;
+        align-items: center;
+        gap: 5px;
+    }
+
+    .nav-link {
+        display: block;
+        width: 100%;
+        text-align: center;
+    }
+
+    .logo {
+        width: 70px;
+    }
+}
 
 
 @media (min-width: 768px){
 /*-------------HEADER----------------*/
-    .container__menu{
-        display: flex;
-        justify-content: space-between;
-        flex-wrap: wrap;
-    }
-    .nav1 a {
-        font-size: 1rem;
-        
-    }
-    .nav2 a {
-        font-size: 1rem;
-        
-    }
-    .container__menu .nav1{ 
-        width: 50%; 
-        text-align: center;
-        align-items: center;
-        display: grid;
-        grid-template-columns: 1fr 1fr 1fr;
-    }
-
-    .container__menu .nav2{
-        width: 50%; 
-        text-align: center;
-        display: grid;
-        grid-template-columns: 1fr 1fr 1fr;
-    }
-
-
-    .ofertas{
-        flex-direction: row;
-    }
-
-    .oferta_ind{
-        width: 40%;
-    } 
+    
     /*  Comienzo detalle producto*/
     .product__detail {
         display: flex;
