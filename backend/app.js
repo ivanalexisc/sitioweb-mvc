@@ -1,84 +1,45 @@
 const createError = require('http-errors');
 const express = require('express');
-const path = require('path');
 const cookieParser = require('cookie-parser');
 const logger = require('morgan');
-const methodOverride = require('method-override');
-const log = require('./src/middlewares/log');
 const cors = require('cors');
-const session = require('express-session');
+require('dotenv').config();
+
 const app = express();
 
-
-const apiRouter = require('./src/routes/api/apiRoutes');
+// --- Rutas API ---
 const authRoutes = require('./src/routes/api/authRoutes');
 const productApiRoutes = require('./src/routes/api/productRoutes');
 const catalogRoutes = require('./src/routes/api/catalogRoutes');
 const cartApiRoutes = require('./src/routes/api/cartApiRoutes');
-const indexRouter = require('./src/routes/index');
-const usersRouter = require('./src/routes/users');
-const productsRouter = require('./src/routes/product');
-const cartRoutes = require('./src/routes/cartRoutes');
 
-
-
-
-// view engine setup
-app.set('views', path.join(__dirname, 'src/views'));
-app.set('view engine', 'ejs');
-app.use(express.static('public'));
+// --- Middlewares ---
 app.use(logger('dev'));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
-app.use(methodOverride('_method'));
 app.use(cors({
-  origin:'http://localhost:5173'
-}));
-app.use(session({
-secret:'Esta es la pagina de ivo :D ',
-resave: true,
-saveUninitialized: true,
-cookie: { secure: false }
+  origin: 'http://localhost:3000', // Next.js
+  credentials: true               // Permite enviar/recibir cookies
 }));
 
-// mis middlewares
-app.use(log);
-app.use((req, res, next) => {
-  if (!req.session.cart) {
-    req.session.cart = []; // 🔹 Inicializa el carrito si no existe
-    console.log("✅ Carrito inicializado:", req.session.cart);
-  }
-  next();
-});
-
-
-
-app.use('/', indexRouter);
-app.use('/api', apiRouter);
+// --- Rutas ---
 app.use('/api/auth', authRoutes);
 app.use('/api/products', productApiRoutes);
 app.use('/api', catalogRoutes);
 app.use('/api/cart', cartApiRoutes);
-app.use('/users', usersRouter);
-app.use('/products', productsRouter);
-app.use('/cart', cartRoutes);
 
-
-// catch 404 and forward to error handler
+// --- 404 handler ---
 app.use(function(req, res, next) {
   next(createError(404));
 });
 
-// error handler
+// --- Error handler (siempre JSON) ---
 app.use(function(err, req, res, next) {
-  // set locals, only providing error in development
-  res.locals.message = err.message;
-  res.locals.error = req.app.get('env') === 'development' ? err : {};
-
-  // render the error page
-  res.status(err.status || 500);
-  res.render('error');
+  res.status(err.status || 500).json({
+    ok: false,
+    message: err.message || 'Error interno del servidor'
+  });
 });
 
 module.exports = app;
