@@ -1,9 +1,11 @@
+require('dotenv').config();
+
 module.exports = {
   "development": {
-    "username": "root",
-    "password": "",
-    "database": "eccomerce_real",
-    "host": "127.0.0.1",
+    "username": process.env.DB_USERNAME || "root",
+    "password": process.env.DB_ROOT_PASSWORD || "",
+    "database": process.env.DB_DATABASE || "eccomerce_real",
+    "host": process.env.DB_HOST || "127.0.0.1",
     "dialect": "mysql",
     define:{
       underscored:true,

@@ -11,6 +11,7 @@ const app = express();
 
 
 const apiRouter = require('./src/routes/api/apiRoutes');
+const authRoutes = require('./src/routes/api/authRoutes');
 const indexRouter = require('./src/routes/index');
 const usersRouter = require('./src/routes/users');
 const productsRouter = require('./src/routes/product');
@@ -51,7 +52,8 @@ app.use((req, res, next) => {
 
 
 app.use('/', indexRouter);
-app.use('/api', apiRouter)
+app.use('/api', apiRouter);
+app.use('/api/auth', authRoutes);
 app.use('/users', usersRouter);
 app.use('/products', productsRouter);
 app.use('/cart', cartRoutes);

@@ -1,0 +1,20 @@
+version: '3.8'
+
+services:
+  mysql:
+    image: mysql:8.0
+    container_name: eccomerce_db
+    restart: unless-stopped
+    ports:
+      - "${DB_PORT:-3306}:3306"
+    environment:
+      MYSQL_ROOT_PASSWORD: ${DB_ROOT_PASSWORD:-root}
+      MYSQL_DATABASE: ${DB_DATABASE:-eccomerce_real}
+    volumes:
+      # El script SQL se ejecuta automáticamente al crear el contenedor
+      - ./src/data/db_eccomerce.sql:/docker-entrypoint-initdb.d/init.sql
+      # Persistencia de datos (no se pierden al reiniciar el contenedor)
+      - mysql_data:/var/lib/mysql
+
+volumes:
+  mysql_data:
