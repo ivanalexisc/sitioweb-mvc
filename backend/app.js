@@ -19,9 +19,10 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(cors({
-  origin: 'http://localhost:3000', // Next.js
-  credentials: true               // Permite enviar/recibir cookies
+  origin: 'http://localhost:3000', // Next.js (puerto por defecto)
+  credentials: true
 }));
+app.use(express.static('public'));
 
 // --- Rutas ---
 app.use('/api/auth', authRoutes);
