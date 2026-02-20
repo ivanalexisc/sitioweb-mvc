@@ -12,6 +12,9 @@ const app = express();
 
 const apiRouter = require('./src/routes/api/apiRoutes');
 const authRoutes = require('./src/routes/api/authRoutes');
+const productApiRoutes = require('./src/routes/api/productRoutes');
+const catalogRoutes = require('./src/routes/api/catalogRoutes');
+const cartApiRoutes = require('./src/routes/api/cartApiRoutes');
 const indexRouter = require('./src/routes/index');
 const usersRouter = require('./src/routes/users');
 const productsRouter = require('./src/routes/product');
@@ -54,6 +57,9 @@ app.use((req, res, next) => {
 app.use('/', indexRouter);
 app.use('/api', apiRouter);
 app.use('/api/auth', authRoutes);
+app.use('/api/products', productApiRoutes);
+app.use('/api', catalogRoutes);
+app.use('/api/cart', cartApiRoutes);
 app.use('/users', usersRouter);
 app.use('/products', productsRouter);
 app.use('/cart', cartRoutes);

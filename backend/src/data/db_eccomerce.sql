@@ -276,6 +276,28 @@ ALTER TABLE `productos`
 ALTER TABLE `producto_user`
   ADD CONSTRAINT `producto_user_ibfk_1` FOREIGN KEY (`id_user`) REFERENCES `usuarios` (`id`),
   ADD CONSTRAINT `producto_user_ibfk_2` FOREIGN KEY (`id_producto`) REFERENCES `productos` (`id`);
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `cart_items`
+--
+
+CREATE TABLE `cart_items` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `id_user` int(11) NOT NULL,
+  `id_producto` int(11) NOT NULL,
+  `quantity` int(11) NOT NULL DEFAULT 1,
+  `created_at` timestamp NOT NULL DEFAULT current_timestamp(),
+  `updated_at` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
+  `deleted_at` timestamp NULL DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  KEY `id_user` (`id_user`),
+  KEY `id_producto` (`id_producto`),
+  CONSTRAINT `cart_items_ibfk_1` FOREIGN KEY (`id_user`) REFERENCES `usuarios` (`id`),
+  CONSTRAINT `cart_items_ibfk_2` FOREIGN KEY (`id_producto`) REFERENCES `productos` (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
