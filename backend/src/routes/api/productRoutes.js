@@ -4,6 +4,7 @@ const path = require('path');
 const multer = require('multer');
 const productApiController = require('../../controllers/api/productApiController');
 const authJwt = require('../../middlewares/authJwt');
+const isAdmin = require('../../middlewares/isAdmin');
 const validator = require('../../middlewares/validator');
 
 // Multer storage config
@@ -33,9 +34,9 @@ router.get('/', productApiController.index);
 router.get('/last', productApiController.last);
 router.get('/:id', productApiController.detail);
 
-// --- Rutas protegidas ---
-router.post('/', authJwt, upload.single('image'), validator.product, productApiController.store);
-router.put('/:id', authJwt, upload.single('image'), validator.product, productApiController.update);
-router.delete('/:id', authJwt, productApiController.delete);
+// --- Rutas protegidas (admin) ---
+router.post('/', authJwt, isAdmin, upload.single('image'), validator.product, productApiController.store);
+router.put('/:id', authJwt, isAdmin, upload.single('image'), validator.product, productApiController.update);
+router.delete('/:id', authJwt, isAdmin, productApiController.delete);
 
 module.exports = router;

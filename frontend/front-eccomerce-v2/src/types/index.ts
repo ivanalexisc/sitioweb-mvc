@@ -6,6 +6,7 @@ export interface User {
   apellido: string;
   email: string;
   direccion: string | null;
+  role: 'user' | 'admin';
 }
 
 export interface Categorie {

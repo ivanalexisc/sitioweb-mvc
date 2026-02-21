@@ -7,7 +7,7 @@ import { HiOutlineShoppingBag, HiOutlineUser, HiOutlineMenu, HiOutlineX } from "
 import { useState } from "react";
 
 export default function Navbar() {
-  const { user, logout } = useAuth();
+  const { user, logout, isAdmin } = useAuth();
   const { itemCount } = useCart();
   const [menuOpen, setMenuOpen] = useState(false);
 
@@ -29,6 +29,11 @@ export default function Navbar() {
           <Link href="/productos" className="hover:opacity-70 transition-opacity">
             Productos
           </Link>
+          {isAdmin && (
+            <Link href="/admin" className="hover:opacity-70 transition-opacity text-[var(--accent)]">
+              Admin
+            </Link>
+          )}
         </div>
 
         {/* Acciones derecha — desktop */}
@@ -86,6 +91,11 @@ export default function Navbar() {
           <Link href="/productos" onClick={() => setMenuOpen(false)} className="py-1">
             Productos
           </Link>
+          {isAdmin && (
+            <Link href="/admin" onClick={() => setMenuOpen(false)} className="py-1 text-[var(--accent)] font-medium">
+              Admin
+            </Link>
+          )}
           {user ? (
             <>
               <span className="text-[var(--muted)]">Hola, {user.nombre}</span>

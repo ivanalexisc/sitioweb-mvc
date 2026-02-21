@@ -1,7 +1,7 @@
 import { NextResponse, type NextRequest } from "next/server";
 
 // Rutas que requieren autenticación (cookie "token" presente)
-const protectedPaths = ["/carrito"];
+const protectedPaths = ["/carrito", "/admin"];
 
 // Rutas que solo deben verse sin autenticación
 const guestOnlyPaths = ["/login", "/register"];
@@ -30,5 +30,5 @@ export function middleware(request: NextRequest) {
 }
 
 export const config = {
-  matcher: ["/carrito/:path*", "/login", "/register"],
+  matcher: ["/carrito/:path*", "/admin/:path*", "/login", "/register"],
 };

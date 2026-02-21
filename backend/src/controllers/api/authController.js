@@ -68,7 +68,7 @@ const controller = {
 
       // Generar JWT
       const token = jwt.sign(
-        { id: user.id, nombre: user.nombre, email: user.email },
+        { id: user.id, nombre: user.nombre, email: user.email, role: user.role },
         process.env.JWT_SECRET,
         { expiresIn: '7d' }
       );
@@ -83,7 +83,7 @@ const controller = {
 
       return res.json({
         ok: true,
-        user: { id: user.id, nombre: user.nombre, apellido: user.apellido, email: user.email }
+        user: { id: user.id, nombre: user.nombre, apellido: user.apellido, email: user.email, role: user.role }
       });
     } catch (error) {
       console.error(error);
@@ -101,7 +101,7 @@ const controller = {
   me: async (req, res) => {
     try {
       const user = await User.findByPk(req.user.id, {
-        attributes: ['id', 'nombre', 'apellido', 'email', 'direccion']
+        attributes: ['id', 'nombre', 'apellido', 'email', 'direccion', 'role']
       });
 
       if (!user) {

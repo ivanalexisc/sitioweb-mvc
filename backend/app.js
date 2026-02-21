@@ -12,6 +12,7 @@ const authRoutes = require('./src/routes/api/authRoutes');
 const productApiRoutes = require('./src/routes/api/productRoutes');
 const catalogRoutes = require('./src/routes/api/catalogRoutes');
 const cartApiRoutes = require('./src/routes/api/cartApiRoutes');
+const adminRoutes = require('./src/routes/api/adminRoutes');
 
 // --- Middlewares ---
 app.use(logger('dev'));
@@ -29,14 +30,15 @@ app.use('/api/auth', authRoutes);
 app.use('/api/products', productApiRoutes);
 app.use('/api', catalogRoutes);
 app.use('/api/cart', cartApiRoutes);
+app.use('/api/admin', adminRoutes);
 
 // --- 404 handler ---
-app.use(function(req, res, next) {
+app.use(function (req, res, next) {
   next(createError(404));
 });
 
 // --- Error handler (siempre JSON) ---
-app.use(function(err, req, res, next) {
+app.use(function (err, req, res, next) {
   res.status(err.status || 500).json({
     ok: false,
     message: err.message || 'Error interno del servidor'
