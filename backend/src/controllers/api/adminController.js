@@ -1,4 +1,4 @@
-const { Product, User, Categorie, Color, Talle } = require('../../database/models');
+const { Product, User, Categorie, Color, Talle, ProductImage } = require('../../database/models');
 
 const controller = {
     // GET /api/admin/stats
@@ -14,7 +14,16 @@ const controller = {
 
             // Últimos 5 productos creados
             const recentProducts = await Product.findAll({
-                include: [Categorie, Color, Talle],
+                include: [
+                    Categorie,
+                    Color,
+                    Talle,
+                    {
+                        model: ProductImage,
+                        as: 'images',
+                        attributes: ['id', 'image', 'is_primary']
+                    }
+                ],
                 order: [['created_at', 'DESC']],
                 limit: 5
             });

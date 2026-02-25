@@ -1,5 +1,20 @@
 const { validationResult } = require('express-validator');
-const { Product, Categorie, Color, Talle } = require('../../database/models');
+const { Product, Categorie, Color, Talle, ProductImage } = require('../../database/models');
+
+const imageInclude = {
+  model: ProductImage,
+  as: 'images',
+  attributes: ['id', 'image', 'is_primary']
+};
+
+const getUploadedImages = (req) => {
+  if (!req.files) return [];
+  if (Array.isArray(req.files)) return req.files;
+
+  const images = req.files.images || [];
+  const legacyImage = req.files.image || [];
+  return [...images, ...legacyImage];
+};
 
 const controller = {
   // GET /api/products?categoria=1&color=2&talle=3&page=1&limit=10
@@ -17,7 +32,7 @@ const controller = {
 
       const { count, rows } = await Product.findAndCountAll({
         where,
-        include: [Categorie, Color, Talle],
+        include: [Categorie, Color, Talle, imageInclude],
         limit: parseInt(limit),
         offset,
         order: [['created_at', 'DESC']]
@@ -43,7 +58,7 @@ const controller = {
   detail: async (req, res) => {
     try {
       const product = await Product.findByPk(req.params.id, {
-        include: [Categorie, Color, Talle]
+        include: [Categorie, Color, Talle, imageInclude]
       });
 
       if (!product) {
@@ -64,7 +79,9 @@ const controller = {
         return res.status(400).json({ ok: false, message: req.fileValidationError });
       }
 
-      if (!req.file) {
+      const uploadedImages = getUploadedImages(req);
+
+      if (!uploadedImages.length) {
         return res.status(400).json({ ok: false, message: 'La imagen es obligatoria para crear un producto' });
       }
 
@@ -82,15 +99,23 @@ const controller = {
         id_categoria: categoria,
         id_color: color,
         id_talle: talle,
-        image: req.file ? `images/${req.file.filename}` : null
+        image: `images/${uploadedImages[0].filename}`
       });
+
+      await ProductImage.bulkCreate(
+        uploadedImages.map((file, index) => ({
+          id_producto: newProduct.id,
+          image: `images/${file.filename}`,
+          is_primary: index === 0
+        }))
+      );
 
       // Asociar producto al usuario que lo creó
       await newProduct.addUser(req.user.id);
 
       // Devolver el producto con sus relaciones
       const product = await Product.findByPk(newProduct.id, {
-        include: [Categorie, Color, Talle]
+        include: [Categorie, Color, Talle, imageInclude]
       });
 
       return res.status(201).json({ ok: true, product });
@@ -106,6 +131,8 @@ const controller = {
       if (req.fileValidationError) {
         return res.status(400).json({ ok: false, message: req.fileValidationError });
       }
+
+      const uploadedImages = getUploadedImages(req);
 
       const resultado = validationResult(req);
       if (!resultado.isEmpty()) {
@@ -127,15 +154,26 @@ const controller = {
         id_categoria: categoria || product.id_categoria,
         id_color: color || product.id_color,
         id_talle: talle || product.id_talle,
-        image: req.file ? `images/${req.file.filename}` : product.image
+        image: uploadedImages.length ? `images/${uploadedImages[0].filename}` : product.image
       });
+
+      if (uploadedImages.length) {
+        await ProductImage.destroy({ where: { id_producto: product.id } });
+        await ProductImage.bulkCreate(
+          uploadedImages.map((file, index) => ({
+            id_producto: product.id,
+            image: `images/${file.filename}`,
+            is_primary: index === 0
+          }))
+        );
+      }
 
       // Actualizar la relación usuario-producto
       await product.removeUsers(await product.getUsers());
       await product.addUser(req.user.id);
 
       const updatedProduct = await Product.findByPk(product.id, {
-        include: [Categorie, Color, Talle]
+        include: [Categorie, Color, Talle, imageInclude]
       });
 
       return res.json({ ok: true, product: updatedProduct });
@@ -156,6 +194,7 @@ const controller = {
 
       product.status = 'descontinuado';
       await product.save();
+      await ProductImage.destroy({ where: { id_producto: product.id } });
       await product.removeUsers(await product.getUsers());
       await product.destroy(); // soft-delete por paranoid: true
 
@@ -170,7 +209,7 @@ const controller = {
   last: async (req, res) => {
     try {
       const product = await Product.findOne({
-        include: [Categorie, Color, Talle],
+        include: [Categorie, Color, Talle, imageInclude],
         order: [['created_at', 'DESC']]
       });
 

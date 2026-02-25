@@ -23,7 +23,7 @@ export default function AdminProductos() {
     const [categoria, setCategoria] = useState("");
     const [color, setColor] = useState("");
     const [talle, setTalle] = useState("");
-    const [image, setImage] = useState<File | null>(null);
+    const [images, setImages] = useState<File[]>([]);
 
     const fetchProducts = async () => {
         try {
@@ -59,7 +59,7 @@ export default function AdminProductos() {
         setCategoria("");
         setColor("");
         setTalle("");
-        setImage(null);
+        setImages([]);
         setEditingId(null);
         setError("");
     };
@@ -76,7 +76,7 @@ export default function AdminProductos() {
         setCategoria(String(product.id_categoria));
         setColor(String(product.id_color));
         setTalle(String(product.id_talle));
-        setImage(null);
+        setImages([]);
         setEditingId(product.id);
         setError("");
         setShowForm(true);
@@ -87,8 +87,8 @@ export default function AdminProductos() {
         setSaving(true);
         setError("");
 
-        if (!editingId && !image) {
-            setError("Debes seleccionar una imagen para crear el producto");
+        if (!editingId && images.length === 0) {
+            setError("Debes seleccionar al menos una imagen para crear el producto");
             setSaving(false);
             return;
         }
@@ -100,7 +100,7 @@ export default function AdminProductos() {
         formData.append("categoria", categoria);
         formData.append("color", color);
         formData.append("talle", talle);
-        if (image) formData.append("image", image);
+        images.forEach((file) => formData.append("images", file));
 
         try {
             if (editingId) {
@@ -245,13 +245,19 @@ export default function AdminProductos() {
                                 <input
                                     type="file"
                                     accept=".jpg,.jpeg,.png"
+                                    multiple
                                     required={!editingId}
-                                    onChange={(e) => setImage(e.target.files?.[0] || null)}
+                                    onChange={(e) => setImages(Array.from(e.target.files || []))}
                                     className="text-sm text-gray-500 file:mr-3 file:py-2 file:px-4 file:rounded-lg file:border-0 file:text-sm file:font-medium file:bg-gray-100 file:text-gray-700 hover:file:bg-gray-200"
                                 />
+                                {images.length > 0 && (
+                                    <p className="text-xs text-gray-600 mt-1">
+                                        {images.length} imagen(es) seleccionada(s)
+                                    </p>
+                                )}
                                 <p className="text-xs text-gray-500 mt-1">
                                     {editingId
-                                        ? "Opcional en edición. Si elegís una nueva, reemplaza la actual."
+                                        ? "Opcional en edición. Si elegís nuevas, reemplazan las actuales."
                                         : "Obligatoria al crear. Formatos: .jpg, .jpeg, .png"}
                                 </p>
                             </div>

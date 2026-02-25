@@ -24,6 +24,12 @@ export interface Talle {
   numero: string;
 }
 
+export interface ProductImage {
+  id: number;
+  image: string;
+  is_primary: boolean;
+}
+
 export interface Product {
   id: number;
   nombre: string;
@@ -33,6 +39,7 @@ export interface Product {
   id_color: number;
   id_talle: number;
   image: string | null;
+  images?: ProductImage[];
   status: "activo" | "descontinuado";
   Categorie: Categorie;
   Color: Color;

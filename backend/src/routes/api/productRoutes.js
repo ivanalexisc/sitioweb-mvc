@@ -30,14 +30,19 @@ const upload = multer({
   }
 });
 
+const uploadProductImages = upload.fields([
+  { name: 'images', maxCount: 6 },
+  { name: 'image', maxCount: 1 }
+]);
+
 // --- Rutas públicas ---
 router.get('/', productApiController.index);
 router.get('/last', productApiController.last);
 router.get('/:id', productApiController.detail);
 
 // --- Rutas protegidas (admin) ---
-router.post('/', authJwt, isAdmin, upload.single('image'), validator.product, productApiController.store);
-router.put('/:id', authJwt, isAdmin, upload.single('image'), validator.product, productApiController.update);
+router.post('/', authJwt, isAdmin, uploadProductImages, validator.product, productApiController.store);
+router.put('/:id', authJwt, isAdmin, uploadProductImages, validator.product, productApiController.update);
 router.delete('/:id', authJwt, isAdmin, productApiController.delete);
 
 module.exports = router;
