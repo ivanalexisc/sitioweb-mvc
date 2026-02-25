@@ -3,6 +3,7 @@
 import { useCart } from "@/context/CartContext";
 import type { CartItem } from "@/types";
 import { HiOutlineTrash, HiMinus, HiPlus } from "react-icons/hi";
+import { resolveImageUrl } from "@/lib/resolveImageUrl";
 
 interface Props {
   item: CartItem;
@@ -10,6 +11,7 @@ interface Props {
 
 export default function CartItemRow({ item }: Props) {
   const { updateQuantity, removeFromCart } = useCart();
+  const imageSrc = resolveImageUrl(item.image);
 
   const precio = Number(item.precio).toLocaleString("es-AR", {
     style: "currency",
@@ -36,7 +38,7 @@ export default function CartItemRow({ item }: Props) {
       {/* Imagen */}
       <div className="w-20 h-20 bg-gray-100 rounded-md overflow-hidden flex-shrink-0">
         {item.image ? (
-          <img src={item.image} alt={item.nombre} className="w-full h-full object-cover" />
+          <img src={imageSrc || ""} alt={item.nombre} className="w-full h-full object-cover" />
         ) : (
           <div className="w-full h-full flex items-center justify-center text-[var(--muted)] text-xs">
             Sin img

@@ -1,4 +1,5 @@
 const { Categorie, Color, Talle } = require('../../database/models');
+const { validationResult } = require('express-validator');
 
 const controller = {
   // ==================== CATEGORÍAS ====================
@@ -17,6 +18,10 @@ const controller = {
   // POST /api/categories (admin)
   createCategory: async (req, res) => {
     try {
+      const errors = validationResult(req);
+      if (!errors.isEmpty()) {
+        return res.status(400).json({ ok: false, errors: errors.array() });
+      }
       const { genero } = req.body;
       if (!genero || !genero.trim()) {
         return res.status(400).json({ ok: false, message: 'El campo "genero" es obligatorio' });
@@ -32,6 +37,10 @@ const controller = {
   // PUT /api/categories/:id (admin)
   updateCategory: async (req, res) => {
     try {
+      const errors = validationResult(req);
+      if (!errors.isEmpty()) {
+        return res.status(400).json({ ok: false, errors: errors.array() });
+      }
       const category = await Categorie.findByPk(req.params.id);
       if (!category) {
         return res.status(404).json({ ok: false, message: 'Categoría no encontrada' });
@@ -79,6 +88,10 @@ const controller = {
   // POST /api/colors (admin)
   createColor: async (req, res) => {
     try {
+      const errors = validationResult(req);
+      if (!errors.isEmpty()) {
+        return res.status(400).json({ ok: false, errors: errors.array() });
+      }
       const { nombre } = req.body;
       if (!nombre || !nombre.trim()) {
         return res.status(400).json({ ok: false, message: 'El campo "nombre" es obligatorio' });
@@ -94,6 +107,10 @@ const controller = {
   // PUT /api/colors/:id (admin)
   updateColor: async (req, res) => {
     try {
+      const errors = validationResult(req);
+      if (!errors.isEmpty()) {
+        return res.status(400).json({ ok: false, errors: errors.array() });
+      }
       const color = await Color.findByPk(req.params.id);
       if (!color) {
         return res.status(404).json({ ok: false, message: 'Color no encontrado' });
@@ -141,6 +158,10 @@ const controller = {
   // POST /api/sizes (admin)
   createSize: async (req, res) => {
     try {
+      const errors = validationResult(req);
+      if (!errors.isEmpty()) {
+        return res.status(400).json({ ok: false, errors: errors.array() });
+      }
       const { numero } = req.body;
       if (numero === undefined || numero === null || numero === '') {
         return res.status(400).json({ ok: false, message: 'El campo "numero" es obligatorio' });
@@ -156,6 +177,10 @@ const controller = {
   // PUT /api/sizes/:id (admin)
   updateSize: async (req, res) => {
     try {
+      const errors = validationResult(req);
+      if (!errors.isEmpty()) {
+        return res.status(400).json({ ok: false, errors: errors.array() });
+      }
       const size = await Talle.findByPk(req.params.id);
       if (!size) {
         return res.status(404).json({ ok: false, message: 'Talle no encontrado' });

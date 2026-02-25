@@ -21,11 +21,12 @@ const upload = multer({
   storage,
   fileFilter: (req, file, cb) => {
     const acceptedExtensions = ['.jpg', '.jpeg', '.png'];
-    const ext = path.extname(file.originalname);
+    const ext = path.extname(file.originalname).toLowerCase();
     if (!acceptedExtensions.includes(ext)) {
-      req.file = file;
+      req.fileValidationError = 'Formato de imagen inválido. Solo se permiten .jpg, .jpeg o .png';
+      return cb(null, false);
     }
-    cb(null, acceptedExtensions.includes(ext));
+    cb(null, true);
   }
 });
 

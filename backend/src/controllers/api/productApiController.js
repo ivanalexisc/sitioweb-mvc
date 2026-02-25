@@ -60,6 +60,14 @@ const controller = {
   // POST /api/products (requiere authJwt)
   store: async (req, res) => {
     try {
+      if (req.fileValidationError) {
+        return res.status(400).json({ ok: false, message: req.fileValidationError });
+      }
+
+      if (!req.file) {
+        return res.status(400).json({ ok: false, message: 'La imagen es obligatoria para crear un producto' });
+      }
+
       const resultado = validationResult(req);
       if (!resultado.isEmpty()) {
         return res.status(400).json({ ok: false, errors: resultado.array() });
@@ -74,7 +82,7 @@ const controller = {
         id_categoria: categoria,
         id_color: color,
         id_talle: talle,
-        image: req.file ? req.file.path : null
+        image: req.file ? `images/${req.file.filename}` : null
       });
 
       // Asociar producto al usuario que lo creó
@@ -95,6 +103,10 @@ const controller = {
   // PUT /api/products/:id (requiere authJwt)
   update: async (req, res) => {
     try {
+      if (req.fileValidationError) {
+        return res.status(400).json({ ok: false, message: req.fileValidationError });
+      }
+
       const resultado = validationResult(req);
       if (!resultado.isEmpty()) {
         return res.status(400).json({ ok: false, errors: resultado.array() });
@@ -115,7 +127,7 @@ const controller = {
         id_categoria: categoria || product.id_categoria,
         id_color: color || product.id_color,
         id_talle: talle || product.id_talle,
-        image: req.file ? req.file.path : product.image
+        image: req.file ? `images/${req.file.filename}` : product.image
       });
 
       // Actualizar la relación usuario-producto

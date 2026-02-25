@@ -2,12 +2,12 @@
 
 import { useEffect, useState } from "react";
 import { useParams, useRouter } from "next/navigation";
-import Image from "next/image";
 import http from "@/lib/http";
 import { useCart } from "@/context/CartContext";
 import { useAuth } from "@/context/AuthContext";
 import type { Product, ProductDetailResponse } from "@/types";
 import { HiArrowLeft, HiShoppingCart, HiCheckCircle } from "react-icons/hi";
+import { resolveImageUrl } from "@/lib/resolveImageUrl";
 
 export default function ProductoDetailPage() {
   const { id } = useParams<{ id: string }>();
@@ -79,9 +79,7 @@ export default function ProductoDetailPage() {
     );
   }
 
-  const imgSrc = product.image
-    ? `http://localhost:3001/images/${product.image}`
-    : "/placeholder.png";
+  const imgSrc = resolveImageUrl(product.image);
 
   return (
     <div className="flex flex-col gap-6">
@@ -97,13 +95,17 @@ export default function ProductoDetailPage() {
       <div className="grid md:grid-cols-2 gap-10">
         {/* Image */}
         <div className="relative aspect-square bg-white rounded-xl overflow-hidden border border-[var(--border)]">
-          <Image
-            src={imgSrc}
-            alt={product.nombre}
-            fill
-            className="object-contain p-4"
-            sizes="(max-width: 768px) 100vw, 50vw"
-          />
+          {imgSrc ? (
+            <img
+              src={imgSrc}
+              alt={product.nombre}
+              className="w-full h-full object-contain p-4"
+            />
+          ) : (
+            <div className="w-full h-full flex items-center justify-center text-[var(--muted)] text-sm">
+              Sin imagen
+            </div>
+          )}
         </div>
 
         {/* Info */}

@@ -87,6 +87,12 @@ export default function AdminProductos() {
         setSaving(true);
         setError("");
 
+        if (!editingId && !image) {
+            setError("Debes seleccionar una imagen para crear el producto");
+            setSaving(false);
+            return;
+        }
+
         const formData = new FormData();
         formData.append("nombre", nombre);
         formData.append("precio", precio);
@@ -98,22 +104,38 @@ export default function AdminProductos() {
 
         try {
             if (editingId) {
-                await http.put(`/products/${editingId}`, formData, {
-                    headers: { "Content-Type": "multipart/form-data" },
-                });
+                await http.put(`/products/${editingId}`, formData);
             } else {
-                await http.post("/products", formData, {
-                    headers: { "Content-Type": "multipart/form-data" },
-                });
+                await http.post("/products", formData);
             }
             setShowForm(false);
             resetForm();
             fetchProducts();
         } catch (err: any) {
-            setError(err.response?.data?.message || "Error al guardar producto");
+            const responseData = err.response?.data;
+            const validationMessage = responseData?.errors?.[0]?.msg;
+            setError(responseData?.message || validationMessage || "Error al guardar producto");
         } finally {
             setSaving(false);
         }
+    };
+
+    const resolveImageUrl = (imagePath: string | null) => {
+        if (!imagePath) return null;
+
+        let normalized = imagePath.replace(/\\/g, "/");
+
+        if (normalized.startsWith("http://") || normalized.startsWith("https://")) {
+            return normalized;
+        }
+
+        normalized = normalized.replace(/^public\//, "");
+
+        if (!normalized.includes("/")) {
+            normalized = `images/${normalized}`;
+        }
+
+        return `http://localhost:3001/${normalized}`;
     };
 
     const handleDelete = async (id: number) => {
@@ -223,9 +245,15 @@ export default function AdminProductos() {
                                 <input
                                     type="file"
                                     accept=".jpg,.jpeg,.png"
+                                    required={!editingId}
                                     onChange={(e) => setImage(e.target.files?.[0] || null)}
                                     className="text-sm text-gray-500 file:mr-3 file:py-2 file:px-4 file:rounded-lg file:border-0 file:text-sm file:font-medium file:bg-gray-100 file:text-gray-700 hover:file:bg-gray-200"
                                 />
+                                <p className="text-xs text-gray-500 mt-1">
+                                    {editingId
+                                        ? "Opcional en edición. Si elegís una nueva, reemplaza la actual."
+                                        : "Obligatoria al crear. Formatos: .jpg, .jpeg, .png"}
+                                </p>
                             </div>
 
                             <div className="flex gap-3 pt-2">
@@ -262,9 +290,9 @@ export default function AdminProductos() {
                                 <tr key={product.id} className="hover:bg-gray-50 transition-colors">
                                     <td className="px-6 py-4">
                                         <div className="flex items-center gap-3">
-                                            {product.image && (
+                                            {resolveImageUrl(product.image) && (
                                                 <img
-                                                    src={`http://localhost:3001/${product.image.replace(/^public[\\/]/, "")}`}
+                                                    src={resolveImageUrl(product.image) || ""}
                                                     alt={product.nombre}
                                                     className="w-10 h-10 rounded-lg object-cover bg-gray-100"
                                                 />

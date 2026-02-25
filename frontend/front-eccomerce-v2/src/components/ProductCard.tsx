@@ -3,12 +3,15 @@
 import Link from "next/link";
 import Image from "next/image";
 import type { Product } from "@/types";
+import { resolveImageUrl } from "@/lib/resolveImageUrl";
 
 interface Props {
   product: Product;
 }
 
 export default function ProductCard({ product }: Props) {
+  const imageSrc = resolveImageUrl(product.image);
+
   const precio = Number(product.precio).toLocaleString("es-AR", {
     style: "currency",
     currency: "ARS",
@@ -20,7 +23,7 @@ export default function ProductCard({ product }: Props) {
       <div className="relative w-full aspect-square bg-gray-100 overflow-hidden">
         {product.image ? (
           <img
-            src={product.image}
+            src={imageSrc || ""}
             alt={product.nombre}
             className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
           />

@@ -3,9 +3,6 @@ import { NextResponse, type NextRequest } from "next/server";
 // Rutas que requieren autenticación (cookie "token" presente)
 const protectedPaths = ["/carrito", "/admin"];
 
-// Rutas que solo deben verse sin autenticación
-const guestOnlyPaths = ["/login", "/register"];
-
 export function middleware(request: NextRequest) {
   const token = request.cookies.get("token")?.value;
   const { pathname } = request.nextUrl;
@@ -16,13 +13,6 @@ export function middleware(request: NextRequest) {
       const loginUrl = new URL("/login", request.url);
       loginUrl.searchParams.set("from", pathname);
       return NextResponse.redirect(loginUrl);
-    }
-  }
-
-  // Rutas de invitado → redirigir a /productos si ya tiene token
-  if (guestOnlyPaths.some((p) => pathname.startsWith(p))) {
-    if (token) {
-      return NextResponse.redirect(new URL("/productos", request.url));
     }
   }
 

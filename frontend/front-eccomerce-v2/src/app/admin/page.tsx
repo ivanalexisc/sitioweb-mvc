@@ -10,6 +10,7 @@ import {
     HiOutlineTemplate,
 } from "react-icons/hi";
 import type { Product } from "@/types";
+import { resolveImageUrl } from "@/lib/resolveImageUrl";
 
 interface Stats {
     totalProducts: number;
@@ -110,9 +111,9 @@ export default function AdminDashboard() {
                                 <tr key={product.id} className="hover:bg-gray-50 transition-colors">
                                     <td className="px-6 py-4">
                                         <div className="flex items-center gap-3">
-                                            {product.image && (
+                                            {resolveImageUrl(product.image) && (
                                                 <img
-                                                    src={`http://localhost:3001/${product.image.replace(/^public[\\/]/, "")}`}
+                                                    src={resolveImageUrl(product.image) || ""}
                                                     alt={product.nombre}
                                                     className="w-10 h-10 rounded-lg object-cover bg-gray-100"
                                                 />

@@ -159,6 +159,7 @@ CREATE TABLE `usuarios` (
   `direccion` varchar(255) DEFAULT NULL,
   `email` varchar(100) NOT NULL,
   `pw_hash` varchar(255) NOT NULL,
+  `role` enum('user','admin') NOT NULL DEFAULT 'user',
   `created_at` timestamp NOT NULL DEFAULT current_timestamp(),
   `updated_at` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
   `deleted_at` timestamp NULL DEFAULT NULL
@@ -168,9 +169,9 @@ CREATE TABLE `usuarios` (
 -- Volcado de datos para la tabla `usuarios`
 --
 
-INSERT INTO `usuarios` (`id`, `nombre`, `apellido`, `direccion`, `email`, `pw_hash`, `created_at`, `updated_at`, `deleted_at`) VALUES
-(1, 'ivan', 'chanenko', 'Espejo 3085', 'ivanalexischanenko@gmail.com', '$2a$10$BLpJzkC/ho2veAlKbTsVB.slJtTXWzKq9VfA992TphZ86qZWav5hm', '2024-08-12 23:03:38', '2024-08-20 03:55:54', NULL),
-(2, 'victor', 'chanenko', 'salta 298', 'vchanenko@gmail.com', '$2a$10$J9nlRa0nSX1iwbNI4aauK.CiCkXQ1P5lvyQCUcgpLqgLHaHgyP.km', '2024-08-20 04:22:17', '2024-08-20 04:22:17', NULL);
+INSERT INTO `usuarios` (`id`, `nombre`, `apellido`, `direccion`, `email`, `pw_hash`, `role`, `created_at`, `updated_at`, `deleted_at`) VALUES
+(1, 'ivan', 'chanenko', 'Espejo 3085', 'ivanalexischanenko@gmail.com', '$2a$10$BLpJzkC/ho2veAlKbTsVB.slJtTXWzKq9VfA992TphZ86qZWav5hm', 'admin', '2024-08-12 23:03:38', '2024-08-20 03:55:54', NULL),
+(2, 'victor', 'chanenko', 'salta 298', 'vchanenko@gmail.com', '$2a$10$J9nlRa0nSX1iwbNI4aauK.CiCkXQ1P5lvyQCUcgpLqgLHaHgyP.km', 'user', '2024-08-20 04:22:17', '2024-08-20 04:22:17', NULL);
 
 --
 -- Índices para tablas volcadas

@@ -1,7 +1,8 @@
 const jwt = require('jsonwebtoken');
+const { User } = require('../database/models');
 require('dotenv').config();
 
-const authJwt = (req, res, next) => {
+const authJwt = async (req, res, next) => {
   const token = req.cookies.token;
 
   if (!token) {
@@ -10,7 +11,16 @@ const authJwt = (req, res, next) => {
 
   try {
     const payload = jwt.verify(token, process.env.JWT_SECRET);
-    req.user = payload; // { id, nombre, email }
+    if (!payload.role) {
+      const user = await User.findByPk(payload.id, { attributes: ['id', 'role'] });
+      if (!user) {
+        return res.status(401).json({ ok: false, message: 'Usuario no encontrado' });
+      }
+      req.user = { ...payload, role: user.role };
+      return next();
+    }
+
+    req.user = payload;
     next();
   } catch (error) {
     return res.status(401).json({ ok: false, message: 'Token inválido o expirado' });
